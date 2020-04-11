@@ -1,7 +1,5 @@
 package com.gestion.demo.bean;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Entity;
