@@ -7,45 +7,55 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gestion.demo.bean.ServiceDocument;
-import com.gestion.demo.dao.ServiceDocumentDao;
-import com.gestion.demo.service.facade.ServiceDocumentService;
+import com.gestion.demo.bean.TypeDocument;
+import com.gestion.demo.dao.TypeDocumentDao;
+import com.gestion.demo.service.facade.TypeDocumentService;
 
 @Service
-public class TypeDocumentServiceImpl implements ServiceDocumentService {
+public class TypeDocumentServiceImpl implements TypeDocumentService {
 	@Autowired
-	private ServiceDocumentDao serviceDocumentDao;
+	private  TypeDocumentDao typeDocumentDao;
 
 	@Override
-	public ServiceDocument findByLibelle(String libelle) {
-		return serviceDocumentDao.findByLibelle(libelle);
+	public TypeDocument findByLibelle(String libelle) {
+		return typeDocumentDao.findByLibelle(libelle);
 	}
 	@Transactional
 	@Override
 	public int deleteByLibelle(String libelle) {
-		return serviceDocumentDao.deleteByLibelle(libelle);
+		return typeDocumentDao.deleteByLibelle(libelle);
+	}
+	@Override
+	public TypeDocument findByServiceDocumentLibelle(String libelle) {
+		return typeDocumentDao.findByServiceDocumentLibelle(libelle);
+	}
+	@Transactional
+	@Override
+	public int deleteByServiceDocumentLibelle(String libelle) {
+		return typeDocumentDao.deleteByServiceDocumentLibelle(libelle);
 	}
 
 	@Override
-	public List<ServiceDocument> findAll() {
-		return serviceDocumentDao.findAll();
+	public List<TypeDocument> findAll() {
+		return typeDocumentDao.findAll();
 	}
 
 	@Override
-	public int save(ServiceDocument serviceDocument) {
-		ServiceDocument foundedServiceDocument = findByLibelle(serviceDocument.getLibelle());
+	public int save(TypeDocument typeDocument) {
+		TypeDocument foundedTypeDocument = findByLibelle(typeDocument.getLibelle());
 
-		if (foundedServiceDocument != null) {
+		if (foundedTypeDocument != null) {
 			return -1;
 		} else {
-			serviceDocumentDao.save(serviceDocument);
+			typeDocumentDao.save(typeDocument);
 			return 1;
 		}
 	}
 
 	@Override
-	public int update(ServiceDocument serviceDocument) {
+	public int update(TypeDocument typeDocument) {
 		return 0;
 	}
+	
 
 }
