@@ -1,4 +1,4 @@
-package com.gestion.demo.ws;
+package com.gestion.demo.bean;
 
 
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Service {
+public class ServiceDocument {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -24,12 +24,12 @@ public class Service {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Service(long id, String libelle) {
+	public ServiceDocument(long id, String libelle) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 	}
-	public Service() {
+	public ServiceDocument() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -52,7 +52,7 @@ public class Service {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Service other = (Service) obj;
+		ServiceDocument other = (ServiceDocument) obj;
 		if (id != other.id)
 			return false;
 		return true;

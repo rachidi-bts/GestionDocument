@@ -15,7 +15,7 @@ public class Responsable {
 	private String login;
 	private String password;
 	@ManyToOne
-	private Service service;
+	private ServiceDocument service;
 	public long getId() {
 		return id;
 	}
@@ -34,13 +34,13 @@ public class Responsable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Service getService() {
+	public ServiceDocument getService() {
 		return service;
 	}
-	public void setService(Service service) {
+	public void setService(ServiceDocument service) {
 		this.service = service;
 	}
-	public Responsable(long id, String login, String password, Service service) {
+	public Responsable(long id, String login, String password, ServiceDocument service) {
 		super();
 		this.id = id;
 		this.login = login;

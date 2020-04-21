@@ -13,7 +13,7 @@ public class TypeDocument {
 	private long id;
 	private String libelle ;
 	@OneToMany(mappedBy = "service")
-	private Service service;
+	private ServiceDocument service;
 	public long getId() {
 		return id;
 	}
@@ -26,13 +26,13 @@ public class TypeDocument {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Service getService() {
+	public ServiceDocument getService() {
 		return service;
 	}
-	public void setService(Service service) {
+	public void setService(ServiceDocument service) {
 		this.service = service;
 	}
-	public TypeDocument(long id, String libelle, Service service) {
+	public TypeDocument(long id, String libelle, ServiceDocument service) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
