@@ -1,37 +1,55 @@
 package com.gestion.demo.bean;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Demmandeur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String login;
-	private String password;
+	private String cne;
+	private String codeApogee;
 	private String nom;
 	private String prenom;
-	private String description;
+	private String cin;
+	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	private Date dateNaissance;
+	private String villeNaissance;
+	
+	private Date anneeInscription;
+	private String filiere;
+	private String login;
+	private String password;
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getLogin() {
-		return login;
+	
+
+	public String getCne() {
+		return cne;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setCne(String cne) {
+		this.cne = cne;
 	}
-	public String getPassword() {
-		return password;
+	public String getCodeApogee() {
+		return codeApogee;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCodeApogee(String codeApogee) {
+		this.codeApogee = codeApogee;
 	}
 	public String getNom() {
 		return nom;
@@ -45,29 +63,80 @@ public class Demmandeur {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public String getDescription() {
-		return description;
+	public Date getDateNaissance() {
+		return dateNaissance;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
-	public Demmandeur(long id, String login, String password, String nom, String prenom, String description) {
+	
+	public String getCin() {
+		return cin;
+	}
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+	public String getVilleNaissance() {
+		return villeNaissance;
+	}
+	public void setVilleNaissance(String villeNaissance) {
+		this.villeNaissance = villeNaissance;
+	}
+	public Date getAnneeInscription() {
+		return anneeInscription;
+	}
+	public void setAnneeInscription(Date anneeInscription) {
+		this.anneeInscription = anneeInscription;
+	}
+	public String getFiliere() {
+		return filiere;
+	}
+	public void setFiliere(String filiere) {
+		this.filiere = filiere;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+    	
+	
+	public Demmandeur(long id, String cne, String codeApogee, String nom, String prenom, String cin, Date dateNaissance,
+			String villeNaissance, Date anneeInscription, String filiere, String login, String password) {
 		super();
 		this.id = id;
-		this.login = login;
-		this.password = password;
+		this.cne = cne;
+		this.codeApogee = codeApogee;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.description = description;
+		this.cin = cin;
+		this.dateNaissance = dateNaissance;
+		this.villeNaissance = villeNaissance;
+		this.anneeInscription = anneeInscription;
+		this.filiere = filiere;
+		this.login = login;
+		this.password = password;
 	}
 	public Demmandeur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	
 	@Override
 	public String toString() {
-		return "Demmandeur [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
-				+ prenom + ", description=" + description + "]";
+		return "Demmandeur [id=" + id + ", cne=" + cne + ", codeApogee=" + codeApogee + ", nom=" + nom + ", prenom="
+				+ prenom + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", villeNaissance=" + villeNaissance
+				+ ", anneeInscription=" + anneeInscription + ", filiere=" + filiere + ", login=" + login + ", password="
+				+ password + "]";
 	}
 	@Override
 	public int hashCode() {
