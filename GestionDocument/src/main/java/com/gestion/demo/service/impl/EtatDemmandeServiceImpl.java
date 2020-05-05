@@ -15,6 +15,7 @@ public class EtatDemmandeServiceImpl implements EtatDemmandeService{
 
 	@Autowired
 	public EtatDemmandeDao etatDemmendeDao;
+	
 	@Override
 	public EtatDemmande findByLibelle(String libelle) {
 		return etatDemmendeDao.findByLibelle(libelle);
