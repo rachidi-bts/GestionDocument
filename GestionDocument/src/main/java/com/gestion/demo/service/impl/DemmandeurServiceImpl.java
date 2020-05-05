@@ -55,7 +55,7 @@ public class DemmandeurServiceImpl implements DemmandeurService{
 		if (foundedDemmandeur != null) {
 			return -1;
 		} else {
-			DemmandeurDao.save(demmandeur);
+			demmandeurDao.save(demmandeur);
 			return 1;
 		}
 	}

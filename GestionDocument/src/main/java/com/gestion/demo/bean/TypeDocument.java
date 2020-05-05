@@ -12,7 +12,7 @@ public class TypeDocument {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String libelle ;
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "serviceDocument")
 	private ServiceDocument service;
 	public long getId() {
 		return id;

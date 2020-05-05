@@ -32,7 +32,7 @@ public class EtatDemmandeServiceImpl implements EtatDemmandeService{
 		if (foundedEtatDemmande != null) {
 			return -1;
 		} else {
-			EtatDemmandeDao.save(etatDemmande);
+			etatDemmendeDao.save(etatDemmande);
 			return 1;
 		}
 	}
