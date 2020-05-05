@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class DemmandeDocument {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne
 	private Demmandeur demmandeur;
 	@ManyToOne
@@ -29,10 +29,10 @@ public class DemmandeDocument {
 	private EtatDemmande etatDemmande;
 	private Date dateValidation ;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -75,7 +75,7 @@ public class DemmandeDocument {
 		// TODO Auto-generated constructor stub
 	}
 	
-		public DemmandeDocument(long id, Demmandeur demmandeur, TypeDocument typeDocument, Date dateDemmande,
+		public DemmandeDocument(Long id, Demmandeur demmandeur, TypeDocument typeDocument, Date dateDemmande,
 			EtatDemmande etatDemmande, Date dateValidation) {
 		super();
 		this.id = id;

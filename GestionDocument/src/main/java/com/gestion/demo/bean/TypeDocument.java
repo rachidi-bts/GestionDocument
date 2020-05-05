@@ -10,14 +10,14 @@ import javax.persistence.OneToMany;
 public class TypeDocument {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String libelle ;
 	@OneToMany(mappedBy = "serviceDocument")
-	private ServiceDocument service;
-	public long getId() {
+	private ServiceDocument serviceDocument;
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLibelle() {
@@ -26,26 +26,25 @@ public class TypeDocument {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public ServiceDocument getService() {
-		return service;
+	
+	public ServiceDocument getServiceDocument() {
+		return serviceDocument;
 	}
-	public void setService(ServiceDocument service) {
-		this.service = service;
+	public void setServiceDocument(ServiceDocument serviceDocument) {
+		this.serviceDocument = serviceDocument;
 	}
-	public TypeDocument(long id, String libelle, ServiceDocument service) {
+
+	public TypeDocument(Long id, String libelle, ServiceDocument serviceDocument) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-		this.service = service;
+		this.serviceDocument = serviceDocument;
 	}
 	public TypeDocument() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "TypeDocument [id=" + id + ", libelle=" + libelle + "]";
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

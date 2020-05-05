@@ -1,21 +1,20 @@
 package com.gestion.demo.bean;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ServiceDocument {
+public class Filiere {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String libelle ;
+	private String libelle;
 	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLibelle() {
@@ -24,19 +23,16 @@ public class ServiceDocument {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public ServiceDocument(long id, String libelle) {
+	public Filiere(Long id, String libelle) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 	}
-	public ServiceDocument() {
+	public Filiere() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "Service [id=" + id + ", libelle=" + libelle + "]";
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,7 +48,7 @@ public class ServiceDocument {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ServiceDocument other = (ServiceDocument) obj;
+		Filiere other = (Filiere) obj;
 		if (id != other.id)
 			return false;
 		return true;

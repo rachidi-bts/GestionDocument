@@ -9,12 +9,12 @@ import javax.persistence.Id;
 public class EtatDemmande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String libelle;
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLibelle() {
@@ -23,7 +23,7 @@ public class EtatDemmande {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public EtatDemmande(long id, String libelle) {
+	public EtatDemmande(Long id, String libelle) {
 		super();
 		this.id = id;
 		this.libelle = libelle;

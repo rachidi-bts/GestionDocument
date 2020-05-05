@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Demmandeur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String cne;
 	private String codeApogee;
 	private String nom;
@@ -27,14 +27,14 @@ public class Demmandeur {
 	private String villeNaissance;
 	
 	private Date anneeInscription;
-	private String filiere;
+	private Filiere filiere;
 	private String login;
 	private String password;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -88,10 +88,11 @@ public class Demmandeur {
 	public void setAnneeInscription(Date anneeInscription) {
 		this.anneeInscription = anneeInscription;
 	}
-	public String getFiliere() {
+
+	public Filiere getFiliere() {
 		return filiere;
 	}
-	public void setFiliere(String filiere) {
+	public void setFiliere(Filiere filiere) {
 		this.filiere = filiere;
 	}
 	public String getLogin() {
@@ -108,8 +109,9 @@ public class Demmandeur {
 	}
     	
 	
-	public Demmandeur(long id, String cne, String codeApogee, String nom, String prenom, String cin, Date dateNaissance,
-			String villeNaissance, Date anneeInscription, String filiere, String login, String password) {
+	
+	public Demmandeur(Long id, String cne, String codeApogee, String nom, String prenom, String cin, Date dateNaissance,
+			String villeNaissance, Date anneeInscription, Filiere filiere, String login, String password) {
 		super();
 		this.id = id;
 		this.cne = cne;
