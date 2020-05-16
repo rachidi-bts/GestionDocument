@@ -1,4 +1,4 @@
-package com.gestion.demo.ws;
+package com.gestion.demo.ws.provided;
 
 import java.util.List;
 

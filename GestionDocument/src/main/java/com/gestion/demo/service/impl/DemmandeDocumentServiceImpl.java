@@ -15,7 +15,7 @@ import com.gestion.demo.service.facade.DemmandeDocumentService;
 import com.gestion.demo.service.facade.DemmandeurService;
 import com.gestion.demo.service.facade.EtatDemmandeService;
 import com.gestion.demo.service.facade.TypeDocumentService;
-import com.project.service.util.SearchUtil; 
+import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
 

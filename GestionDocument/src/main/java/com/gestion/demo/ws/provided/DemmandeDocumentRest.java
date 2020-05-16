@@ -1,4 +1,4 @@
-package com.gestion.demo.ws ;
+package com.gestion.demo.ws.provided ;
 
 
 import java.util.Date;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestion.demo.bean.DemmandeDocument;
 import com.gestion.demo.dao.DemmandeDocumentDao;
 import com.gestion.demo.service.facade.DemmandeDocumentService;
-import com.project.ws.rest.converter.DemmandeDocumentConverter;
-import com.project.ws.rest.vo.DemmandeDocumentVo;
+import com.gestion.demo.ws.converter.DemmandeDocumentConverter;
+import com.gestion.demo.ws.vo.DemmandeDocumentVo;
 @RestController
 @RequestMapping("/is/DemmandeDocument")
 @CrossOrigin(origins = {"http://localhost:4200"})

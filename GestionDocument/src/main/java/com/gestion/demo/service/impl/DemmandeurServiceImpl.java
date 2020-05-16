@@ -13,7 +13,7 @@ import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.dao.DemmandeurDao;
 import com.gestion.demo.service.facade.DemmandeurService;
 import com.gestion.demo.service.facade.FiliereService;
-import com.project.service.util.SearchUtil; 
+import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
 

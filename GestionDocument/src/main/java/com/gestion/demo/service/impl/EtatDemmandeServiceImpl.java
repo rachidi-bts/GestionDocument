@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gestion.demo.bean.EtatDemmande;
 import com.gestion.demo.dao.EtatDemmandeDao;
 import com.gestion.demo.service.facade.EtatDemmandeService;
-import com.project.service.util.SearchUtil; 
+import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
 

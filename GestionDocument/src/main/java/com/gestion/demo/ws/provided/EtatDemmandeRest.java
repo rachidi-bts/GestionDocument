@@ -1,4 +1,4 @@
-package com.gestion.demo.ws ;
+package com.gestion.demo.ws.provided ;
 
 
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.demo.bean.EtatDemmande;
 import com.gestion.demo.service.facade.EtatDemmandeService;
-import com.project.ws.rest.converter.EtatDemmandeConverter;
-import com.project.ws.rest.vo.EtatDemmandeVo;
+import com.gestion.demo.ws.converter.EtatDemmandeConverter;
+import com.gestion.demo.ws.vo.EtatDemmandeVo;
 @RestController
 @RequestMapping("/is/EtatDemmande")
 @CrossOrigin(origins = {"http://localhost:4200"})

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gestion.demo.bean.Filiere;
 import com.gestion.demo.dao.FiliereDao;
 import com.gestion.demo.service.facade.FiliereService;
-import com.project.service.util.SearchUtil; 
+import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
 

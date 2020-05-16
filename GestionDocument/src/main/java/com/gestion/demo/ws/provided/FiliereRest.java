@@ -1,4 +1,4 @@
-package com.gestion.demo.ws ;
+package com.gestion.demo.ws.provided ;
 
 
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.demo.bean.Filiere;
 import com.gestion.demo.service.facade.FiliereService;
-import com.project.ws.rest.converter.FiliereConverter;
-import com.project.ws.rest.vo.FiliereVo;
+import com.gestion.demo.ws.converter.FiliereConverter;
+import com.gestion.demo.ws.vo.FiliereVo;
 @RestController
 @RequestMapping("/is/Filiere")
 @CrossOrigin(origins = {"http://localhost:4200"})

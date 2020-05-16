@@ -1,4 +1,4 @@
-package com.gestion.demo.ws ;
+package com.gestion.demo.ws.provided ;
 
 
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.service.facade.DemmandeurService;
-import com.project.ws.rest.converter.DemmandeurConverter;
-import com.project.ws.rest.vo.DemmandeurVo;
+import com.gestion.demo.ws.converter.DemmandeurConverter;
+import com.gestion.demo.ws.vo.DemmandeurVo;
 @RestController
 @RequestMapping("/is/Demmandeur")
 @CrossOrigin(origins = {"http://localhost:4200"})
