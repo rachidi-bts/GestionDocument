@@ -1,4 +1,5 @@
-package com.gestion.demo.ws;
+package com.gestion.demo.ws ;
+
 
 import java.util.Date;
 import java.util.List;
@@ -16,16 +17,50 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestion.demo.bean.DemmandeDocument;
 import com.gestion.demo.dao.DemmandeDocumentDao;
 import com.gestion.demo.service.facade.DemmandeDocumentService;
-
- @RestController
- @CrossOrigin(origins = { "http://localhost:4200" })
- @RequestMapping("GestionDocument/DemmandeDocument")
+import com.project.ws.rest.converter.DemmandeDocumentConverter;
+import com.project.ws.rest.vo.DemmandeDocumentVo;
+@RestController
+@RequestMapping("/is/DemmandeDocument")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class DemmandeDocumentRest {
-	
-	@Autowired
-	private DemmandeDocumentService demmandeDocumentService;
-	
-	@GetMapping("/Demmandeur/nom/{nom}")
+
+ @Autowired 
+ private DemmandeDocumentService demmandeDocumentService;
+
+ @Autowired 
+private DemmandeDocumentConverter demmandeDocumentConverter ;
+
+@PostMapping("/")
+public DemmandeDocumentVo save(@RequestBody DemmandeDocumentVo demmandeDocumentVo){
+DemmandeDocument demmandeDocument= demmandeDocumentConverter.toItem(demmandeDocumentVo);
+return demmandeDocumentConverter.toVo(demmandeDocumentService.save(demmandeDocument));
+}
+@DeleteMapping("/{id}")
+public void deleteById(@PathVariable Long id){
+demmandeDocumentService.deleteById(id);
+}
+@GetMapping("/")
+public List<DemmandeDocumentVo> findAll(){
+return demmandeDocumentConverter.toVo(demmandeDocumentService.findAll());
+}
+
+ public DemmandeDocumentConverter getDemmandeDocumentConverter(){
+return demmandeDocumentConverter;
+}
+ 
+ public void setDemmandeDocumentConverter(DemmandeDocumentConverter demmandeDocumentConverter){
+this.demmandeDocumentConverter=demmandeDocumentConverter;
+}
+
+ public DemmandeDocumentService getDemmandeDocumentService(){
+return demmandeDocumentService;
+}
+ 
+ public void setDemmandeDocumentService(DemmandeDocumentService demmandeDocumentService){
+this.demmandeDocumentService=demmandeDocumentService;
+}
+ 
+ @GetMapping("/Demmandeur/nom/{nom}")
 	public List<DemmandeDocument> findByDemmandeurNom(@PathVariable String nom) {
 		return demmandeDocumentService.findByDemmandeurNom(nom);
 	}
@@ -56,29 +91,4 @@ public class DemmandeDocumentRest {
 		return demmandeDocumentService.findByDateDemmande(dateDemmande);
 	}
 
-	@DeleteMapping("/EtatDemmande/libelle/{libelle}")
-	public int deleteByEtatDemmandeLibelle(@PathVariable String libelle) {
-		List<DemmandeDocument> demmandeDocuments= demmandeDocumentService.findByEtatDemmandeLibelle(libelle);
-		if (demmandeDocuments == null) {
-			return -1;
-		}else {
-			for (DemmandeDocument demmandeDocument : demmandeDocuments) {
-				demmandeDocumentService.delete(demmandeDocument);	
-			}
-			return 1;
-		
-		}
-	}
-
-   @PostMapping("/")
-	public int save(@RequestBody DemmandeDocument demmandeDocument) {
-		return demmandeDocumentService.save(demmandeDocument);
-		
-	}
-
-	@GetMapping("/")
-	public List<DemmandeDocument> findAll() {
-		return demmandeDocumentService.findAll();
-	}
-	
 }

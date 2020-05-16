@@ -1,20 +1,64 @@
-package com.gestion.demo.ws;
+package com.gestion.demo.ws ;
+
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.gestion.demo.bean.Demmandeur;
-import com.gestion.demo.dao.DemmandeurDao;
-import com.gestion.demo.service.facade.DemmandeurService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestion.demo.bean.Demmandeur;
+import com.gestion.demo.service.facade.DemmandeurService;
+import com.project.ws.rest.converter.DemmandeurConverter;
+import com.project.ws.rest.vo.DemmandeurVo;
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200" })
-@RequestMapping("GestionDocument/Demmandeur")
+@RequestMapping("/is/Demmandeur")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class DemmandeurRest {
 
-	@Autowired
-	public DemmandeurService demmandeurService;
-	
-	@GetMapping("/cne/{cne}")
+ @Autowired 
+ private DemmandeurService demmandeurService;
+
+ @Autowired 
+private DemmandeurConverter demmandeurConverter ;
+
+@PostMapping("/")
+public DemmandeurVo save(@RequestBody DemmandeurVo demmandeurVo){
+Demmandeur demmandeur= demmandeurConverter.toItem(demmandeurVo);
+return demmandeurConverter.toVo(demmandeurService.save(demmandeur));
+}
+@DeleteMapping("/{id}")
+public void deleteById(@PathVariable Long id){
+demmandeurService.deleteById(id);
+}
+@GetMapping("/")
+public List<DemmandeurVo> findAll(){
+return demmandeurConverter.toVo(demmandeurService.findAll());
+}
+
+ public DemmandeurConverter getDemmandeurConverter(){
+return demmandeurConverter;
+}
+ 
+ public void setDemmandeurConverter(DemmandeurConverter demmandeurConverter){
+this.demmandeurConverter=demmandeurConverter;
+}
+
+ public DemmandeurService getDemmandeurService(){
+return demmandeurService;
+}
+ 
+ public void setDemmandeurService(DemmandeurService demmandeurService){
+this.demmandeurService=demmandeurService;
+}
+ 
+ @GetMapping("/cne/{cne}")
 	public Demmandeur findByCne(@PathVariable String cne) {
 		return demmandeurService.findByCne(cne);
 	}
@@ -40,15 +84,4 @@ public class DemmandeurRest {
 		
 	}
 
-	@PostMapping("/")
-	public int save(@RequestBody Demmandeur demmandeur) {
-		return demmandeurService.save(demmandeur);
-			
-	}
-
-	@GetMapping("/")
-	public List<Demmandeur> findAll() {
-		return demmandeurService.findAll();
-	}
-	
 }
