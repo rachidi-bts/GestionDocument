@@ -1,4 +1,5 @@
-package com.gestion.demo.ws.provided;
+package com.gestion.demo.ws.provided ;
+
 
 import java.util.List;
 
@@ -8,44 +9,53 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.demo.bean.Responsable;
 import com.gestion.demo.service.facade.ResponsableService;
-
+import com.gestion.demo.ws.converter.ResponsableConverter;
+import com.gestion.demo.ws.vo.ResponsableVo;
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200" })
-@RequestMapping("GestionDocument/Responsable")
+@RequestMapping("/is/Responsable")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class ResponsableRest {
-	@Autowired
-	private ResponsableService responsableService;
 
-	@GetMapping("/login/{login}")
-	public Responsable findByLogin(@PathVariable String login) {
-		return responsableService.findByLogin(login);
-	}
+ @Autowired 
+ private ResponsableService responsableService;
 
-	@DeleteMapping("/login/{login}")
-	public int deleteByLogin(@PathVariable String login) {
-		return responsableService.deleteByLogin(login);
-	}
+ @Autowired 
+private ResponsableConverter responsableConverter ;
 
-	@GetMapping("/")
-	public List<Responsable> findAll() {
-		return responsableService.findAll();
-	}
+@PostMapping("/")
+public ResponsableVo save(@RequestBody ResponsableVo responsableVo){
+Responsable responsable= responsableConverter.toItem(responsableVo);
+return responsableConverter.toVo(responsableService.save(responsable));
+}
+@DeleteMapping("/{id}")
+public void deleteById(@PathVariable Long id){
+responsableService.deleteById(id);
+}
+@GetMapping("/")
+public List<ResponsableVo> findAll(){
+return responsableConverter.toVo(responsableService.findAll());
+}
 
-	@PostMapping("/")
-	public int save(@RequestBody Responsable responsable) {
-		return responsableService.save(responsable);
-	}
+ public ResponsableConverter getResponsableConverter(){
+return responsableConverter;
+}
+ 
+ public void setResponsableConverter(ResponsableConverter responsableConverter){
+this.responsableConverter=responsableConverter;
+}
 
-	@PutMapping("/")
-	public int update(@RequestBody Responsable responsable) {
-		return responsableService.update(responsable);
-	}
+ public ResponsableService getResponsableService(){
+return responsableService;
+}
+ 
+ public void setResponsableService(ResponsableService responsableService){
+this.responsableService=responsableService;
+}
 
 }

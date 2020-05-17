@@ -1,6 +1,7 @@
 package com.gestion.demo.bean;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

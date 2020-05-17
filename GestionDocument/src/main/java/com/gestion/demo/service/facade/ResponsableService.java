@@ -2,13 +2,17 @@ package com.gestion.demo.service.facade;
 
 import java.util.List;
 
-import com.gestion.demo.bean.Responsable;
-
+import com.gestion.demo.bean.Responsable; 
 public interface ResponsableService {
-	public Responsable findByLogin (String login);
-	public int deleteByLogin (String login);
-	
-	public List<Responsable> findAll();
-	public int save(Responsable responsable);
-	public int update(Responsable responsable);
+
+public Responsable save(Responsable responsable); 
+public List<Responsable>  findAll();
+public Responsable findById(Long id);
+public int delete(Responsable responsable);
+public void  deleteById(Long id);
+public void clone(Responsable responsable,Responsable responsableClone);
+public Responsable clone(Responsable responsable);
+public List<Responsable> clone(List<Responsable>responsables);
+public List<Responsable>  findByCriteria(String login,String password,Long idMin,Long idMax);
+
 }

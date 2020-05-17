@@ -1,4 +1,5 @@
 package com.gestion.demo.dao;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,31 +11,31 @@ import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.bean.EtatDemmande;
 import com.gestion.demo.bean.TypeDocument;
 
-
 @Repository
- public interface DemmandeDocumentDao extends JpaRepository<DemmandeDocument,Long> {
+public interface DemmandeDocumentDao extends JpaRepository<DemmandeDocument, Long> {
 
+	public DemmandeDocument findByDemmandeur(Demmandeur demmandeur);
 
-	 public DemmandeDocument findByDemmandeur(Demmandeur demmandeur);
-	 public DemmandeDocument findByTypeDocument(TypeDocument typeDocument);
-	 public DemmandeDocument findByEtatDemmande(EtatDemmande etatDemmande);
-	 
-	 public List<DemmandeDocument> findByDemmandeurNom(String nom);
-	 public List<DemmandeDocument> findByDemmandeurCodeApogee(String codeApogee);
-	 public List<DemmandeDocument> findByDemmandeurCne(String cne);
-		
-	 public List<DemmandeDocument> findByTypeDocumentLibelle(String libelle);
-		
-	 public List<DemmandeDocument> findByEtatDemmandeLibelle(String libelle);
-		
-	 public DemmandeDocumentDao findByDateDemmande(Date dateDemmande);
-	 
-		
+	public DemmandeDocument findByTypeDocument(TypeDocument typeDocument);
 
-	 public int deleteByDemmandeur(Demmandeur demmandeur);
-	 public int deleteByTypeDocument(TypeDocument typeDocument);
-	 public int deleteByEtatDemmande(EtatDemmande etatDemmande);
-	 
-	
+	public DemmandeDocument findByEtatDemmande(EtatDemmande etatDemmande);
+
+	public List<DemmandeDocument> findByDemmandeurNom(String nom);
+
+	public List<DemmandeDocument> findByDemmandeurCodeApogee(String codeApogee);
+
+	public List<DemmandeDocument> findByDemmandeurCne(String cne);
+
+	public List<DemmandeDocument> findByTypeDocumentLibelle(String libelle);
+
+	public List<DemmandeDocument> findByEtatDemmandeLibelle(String libelle);
+
+	public DemmandeDocumentDao findByDateDemmande(Date dateDemmande);
+
+	public int deleteByDemmandeur(Demmandeur demmandeur);
+
+	public int deleteByTypeDocument(TypeDocument typeDocument);
+
+	public int deleteByEtatDemmande(EtatDemmande etatDemmande);
 
 }

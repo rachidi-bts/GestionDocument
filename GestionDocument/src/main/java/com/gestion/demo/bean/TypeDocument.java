@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class TypeDocument {
@@ -12,7 +12,7 @@ public class TypeDocument {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle ;
-	@OneToMany(mappedBy = "serviceDocument")
+	@ManyToOne
 	private ServiceDocument serviceDocument;
 	public Long getId() {
 		return id;

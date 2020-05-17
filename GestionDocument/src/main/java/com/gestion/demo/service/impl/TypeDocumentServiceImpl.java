@@ -1,61 +1,102 @@
-package com.gestion.demo.service.impl;
 
+package com.gestion.demo.service.impl ;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestion.demo.bean.TypeDocument;
 import com.gestion.demo.dao.TypeDocumentDao;
+import com.gestion.demo.service.facade.ServiceDocumentService;
 import com.gestion.demo.service.facade.TypeDocumentService;
+import com.gestion.demo.service.util.SearchUtil; 
 
-@Service
-public class TypeDocumentServiceImpl implements TypeDocumentService {
-	@Autowired
-	private  TypeDocumentDao typeDocumentDao;
+ @Service  
 
-	@Override
-	public TypeDocument findByLibelle(String libelle) {
-		return typeDocumentDao.findByLibelle(libelle);
-	}
-	@Transactional
-	@Override
-	public int deleteByLibelle(String libelle) {
-		return typeDocumentDao.deleteByLibelle(libelle);
-	}
-	@Override
-	public TypeDocument findByServiceDocumentLibelle(String libelle) {
-		return typeDocumentDao.findByServiceDocumentLibelle(libelle);
-	}
-	@Transactional
-	@Override
-	public int deleteByServiceDocumentLibelle(String libelle) {
-		return typeDocumentDao.deleteByServiceDocumentLibelle(libelle);
-	}
+ public class TypeDocumentServiceImpl implements TypeDocumentService  {
 
-	@Override
-	public List<TypeDocument> findAll() {
-		return typeDocumentDao.findAll();
-	}
 
-	@Override
-	public int save(TypeDocument typeDocument) {
-		TypeDocument foundedTypeDocument = findByLibelle(typeDocument.getLibelle());
+ @Autowired 
 
-		if (foundedTypeDocument != null) {
-			return -1;
-		} else {
-			typeDocumentDao.save(typeDocument);
-			return 1;
-		}
-	}
+ private TypeDocumentDao typedocumentDao;
 
-	@Override
-	public int update(TypeDocument typeDocument) {
-		return 0;
-	}
-	
+ @Autowired 
 
+ private EntityManager entityManager; 
+
+ @Autowired 
+
+ private ServiceDocumentService servicedocumentService; 
+
+ @Override 
+public TypeDocument  save (TypeDocument typedocument){
+
+if(typedocument== null){ 
+ return null; 
+}else {
+ typedocumentDao.save(typedocument);
+return typedocument;
+}
+}
+
+ @Override 
+public List< TypeDocument>  findAll(){
+ return typedocumentDao.findAll();
+}
+
+ @Override 
+public TypeDocument findById(Long id){
+ return typedocumentDao.getOne(id);
+}
+
+ @Override 
+public int delete(TypeDocument typedocument){
+if(typedocument== null){ 
+  return -1; 
+}else {
+ typedocumentDao.delete(typedocument);
+return 1 ;
+}
+}
+
+ @Override 
+public void deleteById(Long id){
+       typedocumentDao.deleteById(id);
+}
+public void clone(TypeDocument typedocument,TypeDocument typedocumentClone){
+if(typedocument!= null && typedocumentClone != null){
+typedocumentClone.setId(typedocument.getId());
+typedocumentClone.setLibelle(typedocument.getLibelle());
+typedocumentClone.setServiceDocument(servicedocumentService.clone(typedocument.getServiceDocument()));
+}
+}
+public TypeDocument clone(TypeDocument typedocument){
+if(typedocument== null){       return null ;
+}else{TypeDocument typedocumentClone= new TypeDocument();
+ clone(typedocument,typedocumentClone);
+return typedocumentClone;
+}
+}
+public List<TypeDocument> clone(List<TypeDocument>typedocuments){
+if(typedocuments== null){
+       return null ;
+}else{List<TypeDocument> typedocumentsClone = new ArrayList();
+	 	 	 typedocuments.forEach((typedocument)->{typedocumentsClone.add(clone(typedocument));
+});return typedocumentsClone;
+}
+}
+ @Override 
+ public List< TypeDocument>  findByCriteria(String libelle,Long idMin,Long idMax){
+ return entityManager.createQuery(constructQuery(libelle,idMin,idMax)).getResultList(); 
+ }
+private String constructQuery(String libelle,Long idMin,Long idMax){
+String query = "SELECT t FROM TypeDocument t where 1=1 ";
+query += SearchUtil.addConstraint( "t", "libelle","=",libelle);
+query += SearchUtil.addConstraintMinMax("t", "id", idMin, idMax);
+
+  return query; 
+}
 }
