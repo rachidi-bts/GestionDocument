@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.TypeDocumentService;
 import com.gestion.demo.ws.converter.TypeDocumentConverter;
 import com.gestion.demo.ws.vo.TypeDocumentVo;
 @RestController
-@RequestMapping("/is/TypeDocument")
+@RequestMapping("GestionDocument/TypeDocument")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class TypeDocumentRest {
 

@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.FiliereService;
 import com.gestion.demo.ws.converter.FiliereConverter;
 import com.gestion.demo.ws.vo.FiliereVo;
 @RestController
-@RequestMapping("/GestionDocument/Filiere")
+@RequestMapping("GestionDocument/Filiere")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class FiliereRest {
 
@@ -57,5 +57,15 @@ return filiereService;
  public void setFiliereService(FiliereService filiereService){
 this.filiereService=filiereService;
 }
+ 
+ @GetMapping("/libelle/{libelle}")
+	public Filiere findByLibelle(@PathVariable String libelle) {
+		return filiereService.findByLibelle(libelle);
+	}
+
+	@DeleteMapping("/libelle/{libelle}")
+	public int deleteByLibelle(@PathVariable String libelle) {
+		return filiereService.deleteByLibelle(libelle);
+	}
 
 }

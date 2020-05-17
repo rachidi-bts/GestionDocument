@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.ServiceDocumentService;
 import com.gestion.demo.ws.converter.ServiceDocumentConverter;
 import com.gestion.demo.ws.vo.ServiceDocumentVo;
 @RestController
-@RequestMapping("/is/ServiceDocument")
+@RequestMapping("GestionDocument/ServiceDocument")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class ServiceDocumentRest {
 

@@ -93,4 +93,14 @@ query += SearchUtil.addConstraintMinMax("f", "id", idMin, idMax);
 
   return query; 
 }
+
+@Override
+public Filiere findByLibelle(String libelle) {
+	return filiereDao.findByLibelle(libelle);
+}
+
+@Override
+public int deleteByLibelle(String libelle) {
+	return filiereDao.deleteByLibelle(libelle);
+}
 }

@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.ResponsableService;
 import com.gestion.demo.ws.converter.ResponsableConverter;
 import com.gestion.demo.ws.vo.ResponsableVo;
 @RestController
-@RequestMapping("/is/Responsable")
+@RequestMapping("GestionDocument/Responsable")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class ResponsableRest {
 

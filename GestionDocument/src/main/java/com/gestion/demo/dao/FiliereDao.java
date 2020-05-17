@@ -9,6 +9,8 @@ import com.gestion.demo.bean.Filiere;
  public interface FiliereDao extends JpaRepository<Filiere,Long> {
 
 
-
+    public Filiere findByLibelle(String libelle);
+	
+	public int deleteByLibelle(String libelle);
 
 }

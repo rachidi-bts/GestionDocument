@@ -14,5 +14,9 @@ public void clone(Filiere filiere,Filiere filiereClone);
 public Filiere clone(Filiere filiere);
 public List<Filiere> clone(List<Filiere>filieres);
  public List<Filiere>  findByCriteria(String libelle,Long idMin,Long idMax);
+ 
+ public Filiere findByLibelle(String libelle);
+	
+	public int deleteByLibelle(String libelle);
 
 }
