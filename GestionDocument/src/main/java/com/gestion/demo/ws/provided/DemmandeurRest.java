@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.DemmandeurService;
 import com.gestion.demo.ws.converter.DemmandeurConverter;
 import com.gestion.demo.ws.vo.DemmandeurVo;
 @RestController
-@RequestMapping("/is/Demmandeur")
+@RequestMapping("GestionDocument/Demmandeur")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class DemmandeurRest {
 

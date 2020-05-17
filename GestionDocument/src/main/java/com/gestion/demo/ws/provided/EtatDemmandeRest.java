@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.EtatDemmandeService;
 import com.gestion.demo.ws.converter.EtatDemmandeConverter;
 import com.gestion.demo.ws.vo.EtatDemmandeVo;
 @RestController
-@RequestMapping("/is/EtatDemmande")
+@RequestMapping("GestionDocument/EtatDemmande")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class EtatDemmandeRest {
 

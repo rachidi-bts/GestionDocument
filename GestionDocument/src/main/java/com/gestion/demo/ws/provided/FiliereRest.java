@@ -18,7 +18,7 @@ import com.gestion.demo.service.facade.FiliereService;
 import com.gestion.demo.ws.converter.FiliereConverter;
 import com.gestion.demo.ws.vo.FiliereVo;
 @RestController
-@RequestMapping("/is/Filiere")
+@RequestMapping("/GestionDocument/Filiere")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class FiliereRest {
 

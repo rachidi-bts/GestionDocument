@@ -20,7 +20,7 @@ import com.gestion.demo.service.facade.DemmandeDocumentService;
 import com.gestion.demo.ws.converter.DemmandeDocumentConverter;
 import com.gestion.demo.ws.vo.DemmandeDocumentVo;
 @RestController
-@RequestMapping("/is/DemmandeDocument")
+@RequestMapping("GestionDocument/DemmandeDocument")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class DemmandeDocumentRest {
 
