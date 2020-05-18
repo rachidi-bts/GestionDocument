@@ -25,7 +25,7 @@ public class DemmandeDocument {
 	@Temporal(value = TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateDemmande ;
-	@OneToOne
+	@ManyToOne
 	private EtatDemmande etatDemmande;
 	private Date dateValidation ;
 	
