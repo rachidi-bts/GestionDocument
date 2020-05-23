@@ -26,7 +26,8 @@ public class Demmandeur {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateNaissance;
 	private String villeNaissance;
-	
+	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
 	private Date anneeInscription;
 	@ManyToOne
 	private Filiere filiere;

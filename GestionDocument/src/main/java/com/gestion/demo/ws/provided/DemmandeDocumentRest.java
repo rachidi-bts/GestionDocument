@@ -75,6 +75,11 @@ this.demmandeDocumentService=demmandeDocumentService;
 	public List<DemmandeDocument> findByDemmandeurCne(@PathVariable String cne) {
 		return demmandeDocumentService.findByDemmandeurCne(cne);
 	}
+	
+	@GetMapping("/Demmandeur/cin/{cin}")
+	public List<DemmandeDocument> findByDemmandeurCin(@PathVariable String cin) {
+		return demmandeDocumentService.findByDemmandeurCin(cin);
+	}
 
 	@GetMapping("/TypeDocument/libelle/{libelle}")
 	public List<DemmandeDocument> findByTypeDocumentLibelle(@PathVariable String libelle) {

@@ -32,6 +32,8 @@ public interface DemmandeDocumentService {
 	public List<DemmandeDocument> findByDemmandeurCodeApogee(String codeApogee);
 
 	public List<DemmandeDocument> findByDemmandeurCne(String cne);
+	
+	public List<DemmandeDocument> findByDemmandeurCin(String cin);
 
 	public List<DemmandeDocument> findByTypeDocumentLibelle(String libelle);
 

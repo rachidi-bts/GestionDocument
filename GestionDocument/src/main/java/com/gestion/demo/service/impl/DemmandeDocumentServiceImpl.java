@@ -131,6 +131,11 @@ public List<DemmandeDocument> findByDemmandeurCne(String cne) {
 }
 
 @Override
+public List<DemmandeDocument> findByDemmandeurCin(String cin) {
+	return demmandedocumentDao.findByDemmandeurCin(cin);
+}
+
+@Override
 public List<DemmandeDocument> findByTypeDocumentLibelle(String libelle) {
 	return demmandedocumentDao.findByTypeDocumentLibelle(libelle);
 }
@@ -144,4 +149,6 @@ public List<DemmandeDocument> findByEtatDemmandeLibelle(String libelle) {
 public DemmandeDocumentDao findByDateDemmande(Date dateDemmande) {
 	return demmandedocumentDao.findByDateDemmande(dateDemmande);
 }
+
+
 }
