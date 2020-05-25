@@ -41,6 +41,7 @@ demmandeDocumentService.deleteById(id);
 }
 @GetMapping("/")
 public List<DemmandeDocumentVo> findAll(){
+	demmandeDocumentConverter.init();
 return demmandeDocumentConverter.toVo(demmandeDocumentService.findAll());
 }
 
