@@ -34,7 +34,7 @@ Demmandeur demmandeur= demmandeurConverter.toItem(demmandeurVo);
 return demmandeurConverter.toVo(demmandeurService.save(demmandeur));
 }
 @DeleteMapping("/{id}")
-public void deleteById(@PathVariable Long id){
+public void deleteById(@PathVariable Long id){ 
 demmandeurService.deleteById(id);
 }
 @GetMapping("/")

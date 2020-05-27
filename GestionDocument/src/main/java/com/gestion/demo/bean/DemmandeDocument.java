@@ -25,7 +25,7 @@ public class DemmandeDocument {
 	@Temporal(value = TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateDemmande ;
-	@ManyToOne
+	@ManyToOne 
 	private EtatDemmande etatDemmande;
 	@Temporal(value = TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
