@@ -39,6 +39,7 @@ demmandeurService.deleteById(id);
 }
 @GetMapping("/")
 public List<DemmandeurVo> findAll(){
+	demmandeurConverter.init();
 return demmandeurConverter.toVo(demmandeurService.findAll());
 }
 

@@ -27,6 +27,8 @@ public class DemmandeDocument {
 	private Date dateDemmande ;
 	@ManyToOne
 	private EtatDemmande etatDemmande;
+	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateValidation ;
 	
 	public Long getId() {
