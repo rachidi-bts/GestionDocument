@@ -1,9 +1,11 @@
 package com.gestion.demo.service.facade;
 
+
 import java.util.Date;
 import java.util.List;
 
-import com.gestion.demo.bean.Demmandeur; 
+import com.gestion.demo.bean.Demmandeur;
+
 public interface DemmandeurService {
 
 public Demmandeur save(Demmandeur demmandeur); 
@@ -23,6 +25,10 @@ public List<Demmandeur> clone(List<Demmandeur>demmandeurs);
 	public Demmandeur findByNom(String nom);
 	
 	public Demmandeur findByCin(String cin);
+	
+	public List<Demmandeur> findByFiliereLibelle(String libelle);
 
 	public int deleteByCne(String cne);
+	
+	
 }

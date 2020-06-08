@@ -1,6 +1,7 @@
 package com.gestion.demo.ws.provided ;
 
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.List;
 
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.demo.bean.DemmandeDocument;
+import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.dao.DemmandeDocumentDao;
 import com.gestion.demo.service.facade.DemmandeDocumentService;
 import com.gestion.demo.ws.converter.DemmandeDocumentConverter;
 import com.gestion.demo.ws.vo.DemmandeDocumentVo;
+import com.itextpdf.text.DocumentException;
 @RestController
 @RequestMapping("GestionDocument/DemmandeDocument")
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -97,4 +100,8 @@ this.demmandeDocumentService=demmandeDocumentService;
 		return demmandeDocumentService.findByDateDemmande(dateDemmande);
 	}
 
+	@GetMapping("/infoDemmandeurPdf/cin/{cin}")
+	public int infoDemmandeurPdf(@PathVariable String cin) throws DocumentException, FileNotFoundException{
+		return demmandeDocumentService.infoDemmandeurPdf(cin);
+	}
 }

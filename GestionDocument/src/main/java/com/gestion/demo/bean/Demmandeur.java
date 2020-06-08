@@ -27,12 +27,13 @@ public class Demmandeur {
 	private Date dateNaissance;
 	private String villeNaissance;
 	@Temporal(value = TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date anneeInscription;
 	@ManyToOne
 	private Filiere filiere;
 	private String login;
 	private String password;
+	
 	
 	public Long getId() {
 		return id;

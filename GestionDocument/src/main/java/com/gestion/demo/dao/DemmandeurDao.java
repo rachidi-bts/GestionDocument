@@ -1,4 +1,6 @@
 package com.gestion.demo.dao;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +23,8 @@ import com.gestion.demo.bean.Filiere;
 	 public Demmandeur findByNom(String nom);
 		
 	 public Demmandeur findByCin(String cin);
+	 
+	 public List<Demmandeur> findByFiliereLibelle(String libelle);
 
 	 public int deleteByCne(String cne);			
 
