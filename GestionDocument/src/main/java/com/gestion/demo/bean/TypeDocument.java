@@ -13,7 +13,9 @@ public class TypeDocument {
 	private Long id;
 	private String libelle ;
 	@ManyToOne
-	private ServiceDocument serviceDocument;
+	private TypeFiliere typeFilliere;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,18 +29,18 @@ public class TypeDocument {
 		this.libelle = libelle;
 	}
 	
-	public ServiceDocument getServiceDocument() {
-		return serviceDocument;
+	public TypeFiliere getTypeFilliere() {
+		return typeFilliere;
 	}
-	public void setServiceDocument(ServiceDocument serviceDocument) {
-		this.serviceDocument = serviceDocument;
+	public void setTypeFilliere(TypeFiliere typeFilliere) {
+		this.typeFilliere = typeFilliere;
 	}
 
-	public TypeDocument(Long id, String libelle, ServiceDocument serviceDocument) {
+	public TypeDocument(Long id, String libelle, TypeFiliere typeFilliere) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-		this.serviceDocument = serviceDocument;
+		this.typeFilliere = typeFilliere;
 	}
 	public TypeDocument() {
 		super();

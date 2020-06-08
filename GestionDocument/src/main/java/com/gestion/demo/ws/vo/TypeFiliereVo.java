@@ -1,10 +1,14 @@
 package com.gestion.demo.ws.vo;
 
-public class TypeDocumentVo{
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class TypeFiliereVo{
 
 private String id ;
 private String libelle ;
-private TypeFiliereVo typeFilliereVo ;
+private FiliereVo filiereVo ;
 
 
 
@@ -24,13 +28,15 @@ public void setLibelle(String  libelle){
      this.libelle = libelle;
 }
 
-public TypeFiliereVo  getTypeFilliereVo (){
-    return typeFilliereVo ;
+public FiliereVo  getFiliereVo (){
+    return filiereVo ;
 }
 
-public void setTypeFilliereVo (TypeFiliereVo  typeFilliereVo ){
-     this.typeFilliereVo  = typeFilliereVo ;
+public void setFilliereVo (FiliereVo  fillieretVo ){
+     this.filiereVo  = fillieretVo ;
 }
+
+
 
 
 }

@@ -11,10 +11,10 @@ import com.gestion.demo.ws.vo.TypeDocumentVo;
  @Component 
 public class TypeDocumentConverter extends AbstractConverter<TypeDocument,TypeDocumentVo>{ 
 
-private boolean serviceDocument; 
+private boolean typeFilliere; 
 
  @Autowired
- private ServiceDocumentConverter serviceDocumentConverter ; 
+ private TypeFiliereConverter typeFilliereConverter ; 
 
  @Override 
  public TypeDocument toItem(TypeDocumentVo vo) {
@@ -23,8 +23,8 @@ private boolean serviceDocument;
       } else {
 TypeDocument item = new TypeDocument();
 
- if(serviceDocument&& vo.getServiceDocumentVo() != null) {
- item.setServiceDocument(serviceDocumentConverter.toItem(vo.getServiceDocumentVo()));
+ if(typeFilliere&& vo.getTypeFilliereVo() != null) {
+ item.setTypeFilliere(typeFilliereConverter.toItem(vo.getTypeFilliereVo()));
 } 
  
  if (StringUtil.isNotEmpty(vo.getLibelle())) {
@@ -46,8 +46,8 @@ return item;
       } else {
 TypeDocumentVo vo = new TypeDocumentVo();
 
- if(serviceDocument&& item.getServiceDocument() != null) {
- vo.setServiceDocumentVo(serviceDocumentConverter.toVo(item.getServiceDocument()));
+ if(typeFilliere&& item.getTypeFilliere() != null) {
+ vo.setTypeFilliereVo(typeFilliereConverter.toVo(item.getTypeFilliere()));
 } 
  
  if (StringUtil.isNotEmpty(item.getLibelle())) {
@@ -63,6 +63,6 @@ return vo;
  }
 public void init() { 
 
-serviceDocument = true; 
+typeFilliere = true; 
 }
  } 

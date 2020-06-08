@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.gestion.demo.bean.TypeDocument;
 import com.gestion.demo.dao.TypeDocumentDao;
-import com.gestion.demo.service.facade.ServiceDocumentService;
+import com.gestion.demo.service.facade.TypeFiliereService;
 import com.gestion.demo.service.facade.TypeDocumentService;
 import com.gestion.demo.service.util.SearchUtil; 
 
@@ -29,7 +29,7 @@ import com.gestion.demo.service.util.SearchUtil;
 
  @Autowired 
 
- private ServiceDocumentService servicedocumentService; 
+ private TypeFiliereService typeFilliereService; 
 
  @Override 
 public TypeDocument  save (TypeDocument typedocument){
@@ -70,7 +70,7 @@ public void clone(TypeDocument typedocument,TypeDocument typedocumentClone){
 if(typedocument!= null && typedocumentClone != null){
 typedocumentClone.setId(typedocument.getId());
 typedocumentClone.setLibelle(typedocument.getLibelle());
-typedocumentClone.setServiceDocument(servicedocumentService.clone(typedocument.getServiceDocument()));
+typedocumentClone.setTypeFilliere(typeFilliereService.clone(typedocument.getTypeFilliere()));
 }
 }
 public TypeDocument clone(TypeDocument typedocument){

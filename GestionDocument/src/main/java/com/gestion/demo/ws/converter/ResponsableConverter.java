@@ -11,10 +11,10 @@ import com.gestion.demo.ws.vo.ResponsableVo;
  @Component 
 public class ResponsableConverter extends AbstractConverter<Responsable,ResponsableVo>{ 
 
-private boolean serviceDocument; 
+private boolean typeFilliere; 
 
  @Autowired
- private ServiceDocumentConverter serviceDocumentConverter ; 
+ private TypeFiliereConverter typeFilliereConverter ; 
 
  @Override 
  public Responsable toItem(ResponsableVo vo) {
@@ -23,8 +23,8 @@ private boolean serviceDocument;
       } else {
 Responsable item = new Responsable();
 
- if(serviceDocument&& vo.getServiceDocumentVo() != null) {
- item.setServiceDocument(serviceDocumentConverter.toItem(vo.getServiceDocumentVo()));
+ if(typeFilliere&& vo.getTypeFilliereVo() != null) {
+ item.setTypeFilliere(typeFilliereConverter.toItem(vo.getTypeFilliereVo()));
 } 
  
  if (StringUtil.isNotEmpty(vo.getLogin())) {
@@ -50,8 +50,8 @@ return item;
       } else {
 ResponsableVo vo = new ResponsableVo();
 
- if(serviceDocument&& item.getServiceDocument() != null) {
- vo.setServiceDocumentVo(serviceDocumentConverter.toVo(item.getServiceDocument()));
+ if(typeFilliere&& item.getTypeFilliere() != null) {
+ vo.setTypeFilliereVo(typeFilliereConverter.toVo(item.getTypeFilliere()));
 } 
  
  if (StringUtil.isNotEmpty(item.getLogin())) {
@@ -71,6 +71,6 @@ return vo;
  }
 public void init() { 
 
-serviceDocument = true; 
+typeFilliere = true; 
 }
  } 

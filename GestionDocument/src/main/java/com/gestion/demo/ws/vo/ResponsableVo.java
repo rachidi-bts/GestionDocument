@@ -5,7 +5,7 @@ public class ResponsableVo{
 private String id ;
 private String login ;
 private String password ;
-private ServiceDocumentVo serviceDocumentVo ;
+private TypeFiliereVo typeFilliereVo ;
 
 
 
@@ -33,12 +33,12 @@ public void setPassword(String  password){
      this.password = password;
 }
 
-public ServiceDocumentVo  getServiceDocumentVo (){
-    return serviceDocumentVo ;
+public TypeFiliereVo  getTypeFilliereVo (){
+    return typeFilliereVo ;
 }
 
-public void setServiceDocumentVo (ServiceDocumentVo  serviceDocumentVo ){
-     this.serviceDocumentVo  = serviceDocumentVo ;
+public void setTypeFilliereVo (TypeFiliereVo  typeFilliereVo ){
+     this.typeFilliereVo  = typeFilliereVo ;
 }
 
 

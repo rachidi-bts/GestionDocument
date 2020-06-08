@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gestion.demo.bean.Responsable;
 import com.gestion.demo.dao.ResponsableDao;
 import com.gestion.demo.service.facade.ResponsableService;
-import com.gestion.demo.service.facade.ServiceDocumentService;
+import com.gestion.demo.service.facade.TypeFiliereService;
 import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
@@ -29,7 +29,7 @@ import com.gestion.demo.service.util.SearchUtil;
 
  @Autowired 
 
- private ServiceDocumentService servicedocumentService; 
+ private TypeFiliereService typeFilliereService; 
 
  @Override 
 public Responsable  save (Responsable responsable){
@@ -71,7 +71,7 @@ if(responsable!= null && responsableClone != null){
 responsableClone.setId(responsable.getId());
 responsableClone.setLogin(responsable.getLogin());
 responsableClone.setPassword(responsable.getPassword());
-responsableClone.setServiceDocument(servicedocumentService.clone(responsable.getServiceDocument()));
+responsableClone.setTypeFilliere(typeFilliereService.clone(responsable.getTypeFilliere()));
 }
 }
 public Responsable clone(Responsable responsable){

@@ -15,7 +15,7 @@ public class Responsable {
 	private String login;
 	private String password;
 	@ManyToOne
-	private ServiceDocument serviceDocument;
+	private TypeFiliere typeFilliere;
 	public Long getId() {
 		return id;
 	}
@@ -35,19 +35,19 @@ public class Responsable {
 		this.password = password;
 	}
 	
-	public ServiceDocument getServiceDocument() {
-		return serviceDocument;
+	public TypeFiliere getTypeFilliere() {
+		return typeFilliere;
 	}
-	public void setServiceDocument(ServiceDocument serviceDocument) {
-		this.serviceDocument = serviceDocument;
+	public void setTypeFilliere(TypeFiliere typeFilliere) {
+		this.typeFilliere = typeFilliere;
 	}
 	
-	public Responsable(Long id, String login, String password, ServiceDocument serviceDocument) {
+	public Responsable(Long id, String login, String password, TypeFiliere typeFilliere) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.password = password;
-		this.serviceDocument = serviceDocument;
+		this.typeFilliere = typeFilliere;
 	}
 	public Responsable() {
 		super();
