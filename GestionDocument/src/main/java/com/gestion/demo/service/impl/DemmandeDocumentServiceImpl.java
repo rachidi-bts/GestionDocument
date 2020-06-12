@@ -1,7 +1,6 @@
 
 package com.gestion.demo.service.impl;
 
-import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -10,13 +9,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestion.demo.bean.DemmandeDocument;
 import com.gestion.demo.bean.Demmandeur;
+import com.gestion.demo.bean.TypeDocument;
 import com.gestion.demo.dao.DemmandeDocumentDao;
 import com.gestion.demo.service.facade.DemmandeDocumentService;
 import com.gestion.demo.service.facade.DemmandeurService;
@@ -31,10 +31,13 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+//import com.itextpdf.layout.element.Text;
 
 @Service
 
@@ -184,8 +187,9 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 
 //PDF
 	@Override
-	public int infoDemmandeurPdf(String cin) throws DocumentException, FileNotFoundException {
+	public int infoDemmandeurPdf(String cin, String libelle) throws DocumentException, FileNotFoundException {
 		Demmandeur demmandeur = demmandeurService.findByCin(cin);
+		TypeDocument typeDocument = typedocumentService.findByLibelle(libelle);
 		String pattern = "dd/MM/yyyy";
 		String pattern2 = "yyyy";
 		String pattern3 = "dd MMMM yyyy ";
@@ -196,12 +200,19 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 		 PdfWriter.getInstance(document, new FileOutputStream("DocumentPdf.pdf"));
 		document.open();
 		
-
+        
+		Font font1 = FontFactory.getFont(FontFactory.TIMES, 9, BaseColor.BLACK);
 		Paragraph p1 = new Paragraph("ROYAUME DU MAROC" + "\n" + "Université Cadi Ayyad." + "\n" +
 		"Faculté des Sciences et Techniques"
-						+ "\n" + "Gueliz-Marrakech" + "\n" + "\n" + "Service des Affaires Estudiantines");
+						+ "\n" + "Gueliz-Marrakech" + "\n" + "\n" , font1);
 		p1.setAlignment(Element.ALIGN_LEFT);
 		document.add(p1);
+		
+		Font font2 = FontFactory.getFont(FontFactory.TIMES, 10, Font.UNDERLINE);
+		Paragraph p2 = new Paragraph("Service des Affaires Estudiantines" , font2);
+		p2.setAlignment(Element.ALIGN_LEFT);
+		document.add(p2);
+		
 
 		/*
 		Paragraph p2 = new Paragraph("المملكة المغربية" + "\n" + "جامعة القاضي عياض" + "\n"
@@ -210,27 +221,37 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 		document.add(p2);
 		*/
 		
-		Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLDOBLIQUE, 20, BaseColor.BLACK);
-		Paragraph p3 = new Paragraph("\n " + "Certificat de scolarité", font);
+		 Font font3 = FontFactory.getFont(FontFactory.HELVETICA_BOLDOBLIQUE, 20, Font.UNDERLINE);
+		Paragraph p3 = new Paragraph("\n " + typeDocument.getLibelle(), font3);
 		p3.setAlignment(Element.ALIGN_CENTER);
 		document.add(p3);
 		
 
-		Paragraph p = new Paragraph();
-		p.add("\n\n\n\t" + "Le Doyen de la Faculté des Sciences et Techniques de Marrakech atteste que l'étudiante:"
-				+ "\n\n \t" + "Mademoiselle  " + demmandeur.getNom() + " " + demmandeur.getPrenom() + "\n\n \t"
-				+ "Numéro de la carte d'identité nationale : " + demmandeur.getCin() + "\n\n \t"
-				+ "Code national de l'étudiante : " + "\t" + demmandeur.getCne() + "\n\n\t" + "née le"
+		Font font = FontFactory.getFont(FontFactory.TIMES, 11);
+		Paragraph p = new Paragraph("\n\n\n" + "   " + "Le Doyen de la Faculté des Sciences et Techniques de Marrakech atteste que l'étudiant(e):"
+				+ "\n\n" + "   " + "Nom complet:  " + demmandeur.getNom() + " " + demmandeur.getPrenom() + "\n\n" + "   "
+				+ "Numéro de la carte d'identité nationale : " + demmandeur.getCin() + "\n\n" + "   "
+				+ "Code national de l'étudiante : " + "                 " + demmandeur.getCne() + "\n\n" + "   " + "née le"
 				+ " " + simpleDateFormat3.format(demmandeur.getDateNaissance()) + " " + "à" + " " +
-				demmandeur.getVilleNaissance() + " " + "(MAROC)" + "\n\n\n \t"
-				+ "est régulièrement inscrite à la Faculté des Sciences et Techniques Gueliz-Marrakech pour" + "\n \t"
-				+ "l'année universitaire" + " " + simpleDateFormat2.format(demmandeur.getAnneeInscription()) + "." + "\n\n \t"
-				+ "Diplôme : 3ème Année LST" + " " + demmandeur.getFiliere().getLibelle() + "\n\n \t" + "Année : LST "
-				+ " " + demmandeur.getFiliere().getLibelle());
-		document.add(p);
-		Paragraph p4 = new Paragraph("\n\n \t"+"                                                                       " +
-		"Fait à Marrakech , le " + simpleDateFormat3.format(new Date()));
+				demmandeur.getVilleNaissance() + " " + "(" + demmandeur.getPaysNaissance() + ")" + "\n\n" + "   "
+				+ "est régulièrement inscrite à la Faculté des Sciences et Techniques Gueliz-Marrakech pour" + "\n" + "   "
+				+ "l'année universitaire" + " " + simpleDateFormat2.format(demmandeur.getAnneeInscription()) + "." + "\n\n" + "   "
+				, font);
 		
+		Font fontt = FontFactory.getFont(FontFactory.TIMES, 11, Font.UNDERLINE);
+		Phrase diplome = new Phrase("Diplôme :", fontt);
+		Phrase phh = new Phrase("  " + "3ème Année LST" + " " + demmandeur.getFiliere().getLibelle() + "\n\n" +"   ", font);
+		Phrase annee = new Phrase("Année :", fontt);
+		Phrase phh2 = new Phrase("      " + "LST" + " " + demmandeur.getFiliere().getLibelle(), font);
+		p.add(diplome);
+		p.add(phh);
+		p.add(annee);
+		p.add(phh2);
+		document.add(p);
+		
+		Paragraph p4 = new Paragraph("\n\n\n" + "                               "
+				+ "                                                                " +
+		"Fait à Marrakech , le " + simpleDateFormat3.format(new Date()), font);
 		document.add(p4);
 
 		Paragraph p5 = new Paragraph("\n \r\r\r\r"  + demmandeur.getCodeApogee() + "\n \r");
@@ -240,18 +261,30 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 		// ligne
 		document.add(new LineSeparator()); // Thick line
 		
-		Paragraph p6 = new Paragraph("Adresse :  B.P549, Av.Abdelkarim elkhattabi" + "\t\t\t\t\t" + "العنوان" + "\n"
-				+ "Gueliz-Marrakech" + "\n" + "Tél: +212 24 43 34" + "         "
-		+ "                                                       " + "Fax: +212 24 43 31" + "\n" 
-				+ "\r");
-		p6.setAlignment(Element.ALIGN_LEFT);
+		Phrase ph1 = new Phrase(" Adresse :", font2);
+		Phrase ph2 = new Phrase("   " + "B.P549, Av.Abdelkarim elkhattabi \t\t\t\t\t" + "العنوان" + "\n"
+		+"                     " + "Gueliz-Marrakech" + "\n" + "                     " + "Tél: +212 24 43 34" + 
+				"                                               "
+		+ "                                                                            " + "Fax: +212 24 43 31" + "\n" 
+				+ "\r", font1);
+		/*String FONT = "resources/fonts/NotoNaskhArabic-Regular.ttf";
+		Font f = FontFactory.getFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+	    final String arabic2 = "\u0627\u0644\u0639\u0646\u0648\u0627\u0646" ;
+	    Phrase ph6 = new Phrase();
+		ph6.add(new Chunk(arabic2,f));*/
+		Paragraph p6 = new Paragraph();
+		p6.add(ph1);
+		p6.add(ph2);
+		//p6.add(ph6);
 		document.add(p6);
+	
 
 		// ligne
 		document.add(new LineSeparator()); // Thick line
 		Paragraph p7 = new Paragraph("\t Le présent document n'est délivré qu'en un seul exemplaire." + "\n"
-				+ "Il appartient à l'étudiant d'en faire dephotocopies certifiées conformes.");
+				+ "Il appartient à l'étudiant d'en faire dephotocopies certifiées conformes.", font1);
 		p7.setAlignment(Element.ALIGN_CENTER);
+		
 		document.add(p7);
 		document.close();
 		return 1;

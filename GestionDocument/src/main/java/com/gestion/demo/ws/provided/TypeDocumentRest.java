@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestion.demo.bean.EtatDemmande;
 import com.gestion.demo.bean.TypeDocument;
 import com.gestion.demo.service.facade.TypeDocumentService;
 import com.gestion.demo.ws.converter.TypeDocumentConverter;
@@ -57,5 +58,10 @@ return typeDocumentService;
  public void setTypeDocumentService(TypeDocumentService typeDocumentService){
 this.typeDocumentService=typeDocumentService;
 }
+ 
+ @GetMapping("/libelle/{libelle}")
+	public TypeDocument findByLibelle(@PathVariable String libelle) {
+		return typeDocumentService.findByLibelle(libelle);
+	}
 
 }

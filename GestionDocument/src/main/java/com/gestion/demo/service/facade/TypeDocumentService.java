@@ -14,5 +14,6 @@ public void clone(TypeDocument typedocument,TypeDocument typedocumentClone);
 public TypeDocument clone(TypeDocument typedocument);
 public List<TypeDocument> clone(List<TypeDocument>typedocuments);
  public List<TypeDocument>  findByCriteria(String libelle,Long idMin,Long idMax);
+ public TypeDocument findByLibelle(String libelle);
 
 }

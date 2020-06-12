@@ -3,6 +3,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.gestion.demo.bean.TypeFiliere;
+import com.gestion.demo.bean.EtatDemmande;
 import com.gestion.demo.bean.TypeDocument;
 
 
@@ -13,5 +14,7 @@ import com.gestion.demo.bean.TypeDocument;
 	 public TypeDocument findByTypeFilliere(TypeFiliere typeFilliere);
 
 	 public int deleteByTypeFilliere(TypeFiliere typeFilliere);
+	 
+	 public TypeDocument findByLibelle(String libelle);
 
 }

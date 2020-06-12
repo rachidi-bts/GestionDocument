@@ -100,8 +100,8 @@ this.demmandeDocumentService=demmandeDocumentService;
 		return demmandeDocumentService.findByDateDemmande(dateDemmande);
 	}
 
-	@GetMapping("/infoDemmandeurPdf/cin/{cin}")
-	public int infoDemmandeurPdf(@PathVariable String cin) throws DocumentException, FileNotFoundException{
-		return demmandeDocumentService.infoDemmandeurPdf(cin);
+	@GetMapping("/infoDemmandeurPdf/cin/{cin}/libelle/{libelle}")
+	public int infoDemmandeurPdf(@PathVariable String cin, @PathVariable String libelle) throws DocumentException, FileNotFoundException{
+		return demmandeDocumentService.infoDemmandeurPdf(cin, libelle);
 	}
 }

@@ -44,5 +44,5 @@ public interface DemmandeDocumentService {
 
 	public DemmandeDocumentDao findByDateDemmande(Date dateDemmande);
 	
-	public int infoDemmandeurPdf(String cin) throws DocumentException, FileNotFoundException;
+	public int infoDemmandeurPdf(String cin, String libelle) throws DocumentException, FileNotFoundException;
 }

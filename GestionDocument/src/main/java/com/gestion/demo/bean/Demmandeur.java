@@ -26,6 +26,7 @@ public class Demmandeur {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateNaissance;
 	private String villeNaissance;
+	private String paysNaissance;
 	@Temporal(value = TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date anneeInscription;
@@ -86,6 +87,13 @@ public class Demmandeur {
 	public void setVilleNaissance(String villeNaissance) {
 		this.villeNaissance = villeNaissance;
 	}
+	
+	public String getPaysNaissance() {
+		return paysNaissance;
+	}
+	public void setPaysNaissance(String paysNaissance) {
+		this.paysNaissance = paysNaissance;
+	}
 	public Date getAnneeInscription() {
 		return anneeInscription;
 	}
@@ -113,9 +121,9 @@ public class Demmandeur {
 	}
     	
 	
-	
 	public Demmandeur(Long id, String cne, String codeApogee, String nom, String prenom, String cin, Date dateNaissance,
-			String villeNaissance, Date anneeInscription, Filiere filiere, String login, String password) {
+			String villeNaissance, String paysNaissance, Date anneeInscription, Filiere filiere, String login,
+			String password) {
 		super();
 		this.id = id;
 		this.cne = cne;
@@ -125,6 +133,7 @@ public class Demmandeur {
 		this.cin = cin;
 		this.dateNaissance = dateNaissance;
 		this.villeNaissance = villeNaissance;
+		this.paysNaissance = paysNaissance;
 		this.anneeInscription = anneeInscription;
 		this.filiere = filiere;
 		this.login = login;
@@ -137,12 +146,13 @@ public class Demmandeur {
 
 	
 	
+
 	@Override
 	public String toString() {
 		return "Demmandeur [id=" + id + ", cne=" + cne + ", codeApogee=" + codeApogee + ", nom=" + nom + ", prenom="
 				+ prenom + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", villeNaissance=" + villeNaissance
-				+ ", anneeInscription=" + anneeInscription + ", filiere=" + filiere + ", login=" + login + ", password="
-				+ password + "]";
+				+ ", paysNaissance=" + paysNaissance + ", anneeInscription=" + anneeInscription + ", filiere=" + filiere
+				+ ", login=" + login + ", password=" + password + "]";
 	}
 	@Override
 	public int hashCode() {

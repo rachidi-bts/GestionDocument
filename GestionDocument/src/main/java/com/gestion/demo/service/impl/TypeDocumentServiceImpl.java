@@ -99,4 +99,9 @@ query += SearchUtil.addConstraintMinMax("t", "id", idMin, idMax);
 
   return query; 
 }
+
+@Override
+public TypeDocument findByLibelle(String libelle) {
+	return typedocumentDao.findByLibelle(libelle);
+}
 }
