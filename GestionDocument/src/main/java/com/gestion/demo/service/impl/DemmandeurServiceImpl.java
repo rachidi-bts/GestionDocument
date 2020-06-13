@@ -163,8 +163,8 @@ public int deleteByCne(String cne) {
 }
 
 @Override
-public List<Demmandeur> findByFiliereLibelle(String libelle) {
-	return demmandeurDao.findByFiliereLibelle(libelle);
+public List<Demmandeur> findByFiliereAbrv(String abrv) {
+	return demmandeurDao.findByFiliereAbrv(abrv);
 }
 
 }

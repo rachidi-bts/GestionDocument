@@ -26,7 +26,7 @@ public List<Demmandeur> clone(List<Demmandeur>demmandeurs);
 	
 	public Demmandeur findByCin(String cin);
 	
-	public List<Demmandeur> findByFiliereLibelle(String libelle);
+	public List<Demmandeur> findByFiliereAbrv(String abrv);
 
 	public int deleteByCne(String cne);
 	

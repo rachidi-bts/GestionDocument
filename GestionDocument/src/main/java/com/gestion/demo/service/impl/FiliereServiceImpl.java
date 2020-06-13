@@ -100,7 +100,14 @@ public Filiere findByLibelle(String libelle) {
 }
 
 @Override
-public int deleteByLibelle(String libelle) {
-	return filiereDao.deleteByLibelle(libelle);
+public Filiere findByAbrv(String abrv) {
+	return filiereDao.findByAbrv(abrv);
 }
+
+@Override
+public int deleteByAbrv(String abrv) {
+	return filiereDao.deleteByAbrv(abrv);
+}
+
+
 }

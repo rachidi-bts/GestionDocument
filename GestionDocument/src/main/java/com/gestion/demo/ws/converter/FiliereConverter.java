@@ -21,6 +21,10 @@ Filiere item = new Filiere();
  if (StringUtil.isNotEmpty(vo.getLibelle())) {
  item.setLibelle(vo.getLibelle());
 } 
+ 
+ if (StringUtil.isNotEmpty(vo.getAbrv())) {
+ item.setAbrv(vo.getAbrv());
+} 
 
  if (vo.getId() != null) {
  item.setId(NumberUtil.toLong(vo.getId()));
@@ -39,6 +43,10 @@ FiliereVo vo = new FiliereVo();
 
  if (StringUtil.isNotEmpty(item.getLibelle())) {
  vo.setLibelle(item.getLibelle());
+} 
+
+ if (StringUtil.isNotEmpty(item.getAbrv())) {
+ vo.setAbrv(item.getAbrv());
 } 
 
  if (item.getId() != null) {

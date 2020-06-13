@@ -17,6 +17,8 @@ public List<Filiere> clone(List<Filiere>filieres);
  
  public Filiere findByLibelle(String libelle);
 	
-	public int deleteByLibelle(String libelle);
+ public Filiere findByAbrv(String abrv);
+ 
+	public int deleteByAbrv(String abrv);
 
 }

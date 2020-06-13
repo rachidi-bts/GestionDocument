@@ -62,10 +62,15 @@ this.filiereService=filiereService;
 	public Filiere findByLibelle(@PathVariable String libelle) {
 		return filiereService.findByLibelle(libelle);
 	}
+ 
+ @GetMapping("/abrv/{abrv}")
+	public Filiere findByAbrv(@PathVariable String abrv) {
+		return filiereService.findByAbrv(abrv);
+	}
 
-	@DeleteMapping("/libelle/{libelle}")
-	public int deleteByLibelle(@PathVariable String libelle) {
-		return filiereService.deleteByLibelle(libelle);
+	@DeleteMapping("/abrv/{abrv}")
+	public int deleteByAbrv(@PathVariable String abrv) {
+		return filiereService.deleteByAbrv(abrv);
 	}
 
 }

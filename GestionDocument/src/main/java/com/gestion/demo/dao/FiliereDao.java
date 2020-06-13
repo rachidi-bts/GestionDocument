@@ -11,6 +11,9 @@ import com.gestion.demo.bean.Filiere;
 
     public Filiere findByLibelle(String libelle);
 	
-	public int deleteByLibelle(String libelle);
+    public Filiere findByAbrv(String abrv);
+    
+	public int deleteByAbrv(String abrv);
+
 
 }

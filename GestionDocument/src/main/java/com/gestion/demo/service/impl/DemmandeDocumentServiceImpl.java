@@ -231,16 +231,16 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 		Paragraph p = new Paragraph("\n\n\n" + "   " + "Le Doyen de la Faculté des Sciences et Techniques de Marrakech atteste que l'étudiant(e):"
 				+ "\n\n" + "   " + "Nom complet:  " + demmandeur.getNom() + " " + demmandeur.getPrenom() + "\n\n" + "   "
 				+ "Numéro de la carte d'identité nationale : " + demmandeur.getCin() + "\n\n" + "   "
-				+ "Code national de l'étudiante : " + "                 " + demmandeur.getCne() + "\n\n" + "   " + "née le"
+				+ "Code national de l'étudiant(e) : " + "                 " + demmandeur.getCne() + "\n\n" + "   " + "né(e) le"
 				+ " " + simpleDateFormat3.format(demmandeur.getDateNaissance()) + " " + "à" + " " +
 				demmandeur.getVilleNaissance() + " " + "(" + demmandeur.getPaysNaissance() + ")" + "\n\n" + "   "
-				+ "est régulièrement inscrite à la Faculté des Sciences et Techniques Gueliz-Marrakech pour" + "\n" + "   "
+				+ "est régulièrement inscrit(e) à la Faculté des Sciences et Techniques Gueliz-Marrakech pour" + "\n" + "   "
 				+ "l'année universitaire" + " " + simpleDateFormat2.format(demmandeur.getAnneeInscription()) + "." + "\n\n" + "   "
 				, font);
 		
 		Font fontt = FontFactory.getFont(FontFactory.TIMES, 11, Font.UNDERLINE);
 		Phrase diplome = new Phrase("Diplôme :", fontt);
-		Phrase phh = new Phrase("  " + "3ème Année LST" + " " + demmandeur.getFiliere().getLibelle() + "\n\n" +"   ", font);
+		Phrase phh = new Phrase("  " + "3ème Année LST" + " " + demmandeur.getFiliere().getAbrv() + "\n\n" +"   ", font);
 		Phrase annee = new Phrase("Année :", fontt);
 		Phrase phh2 = new Phrase("      " + "LST" + " " + demmandeur.getFiliere().getLibelle(), font);
 		p.add(diplome);

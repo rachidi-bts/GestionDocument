@@ -4,6 +4,7 @@ public class FiliereVo{
 
 private String id ;
 private String libelle ;
+private String abrv;
 
 
 
@@ -21,6 +22,14 @@ public String  getLibelle(){
 
 public void setLibelle(String  libelle){
      this.libelle = libelle;
+}
+
+public String getAbrv() {
+	return abrv;
+}
+
+public void setAbrv(String abrv) {
+	this.abrv = abrv;
 }
 
 

@@ -11,6 +11,7 @@ public class Filiere {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	private String abrv;
 	public Long getId() {
 		return id;
 	}
@@ -23,16 +24,24 @@ public class Filiere {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Filiere(Long id, String libelle) {
-		super();
-		this.id = id;
-		this.libelle = libelle;
+	public String getAbrv() {
+		return abrv;
 	}
+	public void setAbrv(String abrv) {
+		this.abrv = abrv;
+	}
+	
 	public Filiere() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public Filiere(Long id, String libelle, String abrv) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.abrv = abrv;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,5 +62,10 @@ public class Filiere {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Filiere [id=" + id + ", libelle=" + libelle + ", abrv=" + abrv + "]";
+	}
+	
 	
 }

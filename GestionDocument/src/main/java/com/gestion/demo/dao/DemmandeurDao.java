@@ -24,7 +24,7 @@ import com.gestion.demo.bean.Filiere;
 		
 	 public Demmandeur findByCin(String cin);
 	 
-	 public List<Demmandeur> findByFiliereLibelle(String libelle);
+	 public List<Demmandeur> findByFiliereAbrv(String abrv);
 
 	 public int deleteByCne(String cne);			
 

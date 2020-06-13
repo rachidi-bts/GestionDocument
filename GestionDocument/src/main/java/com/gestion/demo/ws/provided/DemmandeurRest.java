@@ -79,9 +79,9 @@ this.demmandeurService=demmandeurService;
 		return demmandeurService.findByCin(cin);
 	}
 
-	@GetMapping("/filiere/libelle/{libelle}")
-	public List<Demmandeur> findByFiliereLibelle(@PathVariable String libelle){
-	return demmandeurService.findByFiliereLibelle(libelle);
+	@GetMapping("/filiere/abrv/{abrv}")
+	public List<Demmandeur> findByFiliereAbrv(@PathVariable String abrv){
+	return demmandeurService.findByFiliereAbrv(abrv);
 	}
 	
 	@DeleteMapping("/cne/{cne}")
