@@ -26,6 +26,8 @@ public class DemmandeDocument {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateValidation ;
 	
+	private String pathDocument;
+	
 	public Long getId() {
 		return id;
 	}

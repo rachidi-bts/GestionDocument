@@ -87,10 +87,10 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 						}				
 			}
 			if(demmandedocument.getTypeDocument().getLibelle().equals("Certificat de scolarité")) {
-				if(demmandedocument.getDemmandeur().getNombreDeAttestationScolariteRestantes() == 0) {
+				if(demmandedocument.getDemmandeur().getNombreDeCertificatScolariteRestantes() == 0) {
 					return -3;
 						} else {
-							demmandedocument.getDemmandeur().setNombreDeAttestationScolariteRestantes((demmandedocument.getDemmandeur().getNombreDeAttestationScolariteRestantes() -1));
+							demmandedocument.getDemmandeur().setNombreDeCertificatScolariteRestantes((demmandedocument.getDemmandeur().getNombreDeCertificatScolariteRestantes() -1));
 							demmandeurDao.save(demmandedocument.getDemmandeur());
 							demmandedocumentDao.save(demmandedocument);
 						}
