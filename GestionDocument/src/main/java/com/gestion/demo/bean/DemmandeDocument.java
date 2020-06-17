@@ -7,11 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class DemmandeDocument {
@@ -22,13 +19,11 @@ public class DemmandeDocument {
 	private Demmandeur demmandeur;
 	@ManyToOne
 	private TypeDocument typeDocument;
-	@Temporal(value = TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateDemmande ;
 	@ManyToOne 
 	private EtatDemmande etatDemmande;
-	@Temporal(value = TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateValidation ;
 	
 	public Long getId() {

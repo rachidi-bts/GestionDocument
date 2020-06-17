@@ -34,9 +34,8 @@ public class DemmandeDocumentRest {
 private DemmandeDocumentConverter demmandeDocumentConverter ;
 
 @PostMapping("/")
-public DemmandeDocumentVo save(@RequestBody DemmandeDocumentVo demmandeDocumentVo){
-DemmandeDocument demmandeDocument= demmandeDocumentConverter.toItem(demmandeDocumentVo);
-return demmandeDocumentConverter.toVo(demmandeDocumentService.save(demmandeDocument));
+public int save(@RequestBody DemmandeDocument demmandeDocument){
+return demmandeDocumentService.save(demmandeDocument);
 }
 @DeleteMapping("/{id}")
 public void deleteById(@PathVariable Long id){

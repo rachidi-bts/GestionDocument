@@ -18,6 +18,7 @@ import com.gestion.demo.bean.DemmandeDocument;
 import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.bean.TypeDocument;
 import com.gestion.demo.dao.DemmandeDocumentDao;
+import com.gestion.demo.dao.DemmandeurDao;
 import com.gestion.demo.service.facade.DemmandeDocumentService;
 import com.gestion.demo.service.facade.DemmandeurService;
 import com.gestion.demo.service.facade.EtatDemmandeService;
@@ -52,26 +53,51 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 	private EntityManager entityManager;
 
 	@Autowired
-
 	private DemmandeurService demmandeurService;
-
+	@Autowired
+	private DemmandeurDao demmandeurDao;
 	@Autowired
 
 	private TypeDocumentService typedocumentService;
 
+	
 	@Autowired
-
 	private EtatDemmandeService etatdemmandeService;
 
 	@Override
-	public DemmandeDocument save(DemmandeDocument demmandedocument) {
-
+	public int save(DemmandeDocument demmandedocument) {
+      Demmandeur demmandeur = demmandeurDao.findByCne(demmandedocument.getDemmandeur().getCne());
+      TypeDocument typeDocument = typedocumentService.findByLibelle(demmandedocument.getTypeDocument().getLibelle());
+      demmandedocument.setDemmandeur(demmandeur);
+      demmandedocument.setTypeDocument(typeDocument);
+      demmandedocument.setEtatDemmande(etatdemmandeService.findByLibelle("non traitée"));
+      demmandedocument.setDateDemmande(new Date());
+      demmandedocument.setDateValidation(null);
 		if (demmandedocument == null) {
-			return null;
+			return -1;
 		} else {
-			demmandedocumentDao.save(demmandedocument);
-			return demmandedocument;
+			if(demmandedocument.getTypeDocument().getLibelle().equals("Attestation d'inscription")) {
+				if(demmandedocument.getDemmandeur().getNombreDeAttestationInscriptionRestantes() == 0) {
+					return -2;
+						} else {
+							demmandedocument.getDemmandeur().setNombreDeAttestationInscriptionRestantes((demmandedocument.getDemmandeur().getNombreDeAttestationInscriptionRestantes() -1));
+							System.out.println(demmandedocument.getDemmandeur().getNombreDeAttestationInscriptionRestantes());
+							demmandeurDao.save(demmandedocument.getDemmandeur());
+							demmandedocumentDao.save(demmandedocument);
+						}				
+			}
+			if(demmandedocument.getTypeDocument().getLibelle().equals("Certificat de scolarité")) {
+				if(demmandedocument.getDemmandeur().getNombreDeAttestationScolariteRestantes() == 0) {
+					return -3;
+						} else {
+							demmandedocument.getDemmandeur().setNombreDeAttestationScolariteRestantes((demmandedocument.getDemmandeur().getNombreDeAttestationScolariteRestantes() -1));
+							demmandeurDao.save(demmandedocument.getDemmandeur());
+							demmandedocumentDao.save(demmandedocument);
+						}
+			}
+			
 		}
+		return 1;
 	}
 
 	@Override
@@ -197,7 +223,7 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 		SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat(pattern2);
 		SimpleDateFormat simpleDateFormat3 = new SimpleDateFormat(pattern3);
 		Document document = new Document();
-		 PdfWriter.getInstance(document, new FileOutputStream("DocumentPdf.pdf"));
+		 PdfWriter.getInstance(document, new FileOutputStream(demmandeur.getNom() + demmandeur.getPrenom() + ".pdf"));
 		document.open();
 		
         

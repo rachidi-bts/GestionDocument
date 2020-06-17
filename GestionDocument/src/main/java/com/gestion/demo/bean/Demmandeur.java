@@ -34,7 +34,8 @@ public class Demmandeur {
 	private Filiere filiere;
 	private String login;
 	private String password;
-	
+	private Integer NombreDeAttestationInscriptionRestantes;
+	private Integer NombreDeAttestationScolariteRestantes;
 	
 	public Long getId() {
 		return id;
@@ -123,7 +124,8 @@ public class Demmandeur {
 	
 	public Demmandeur(Long id, String cne, String codeApogee, String nom, String prenom, String cin, Date dateNaissance,
 			String villeNaissance, String paysNaissance, Date anneeInscription, Filiere filiere, String login,
-			String password) {
+			String password, Integer nombreDeAttestationInscriptionRestantes,
+			Integer nombreDeAttestationScolariteRestantes) {
 		super();
 		this.id = id;
 		this.cne = cne;
@@ -138,6 +140,8 @@ public class Demmandeur {
 		this.filiere = filiere;
 		this.login = login;
 		this.password = password;
+		NombreDeAttestationInscriptionRestantes = nombreDeAttestationInscriptionRestantes;
+		NombreDeAttestationScolariteRestantes = nombreDeAttestationScolariteRestantes;
 	}
 	public Demmandeur() {
 		super();
@@ -145,14 +149,14 @@ public class Demmandeur {
 	}
 
 	
-	
-
 	@Override
 	public String toString() {
 		return "Demmandeur [id=" + id + ", cne=" + cne + ", codeApogee=" + codeApogee + ", nom=" + nom + ", prenom="
 				+ prenom + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", villeNaissance=" + villeNaissance
 				+ ", paysNaissance=" + paysNaissance + ", anneeInscription=" + anneeInscription + ", filiere=" + filiere
-				+ ", login=" + login + ", password=" + password + "]";
+				+ ", login=" + login + ", password=" + password + ", NombreDeAttestationInscriptionRestantes="
+				+ NombreDeAttestationInscriptionRestantes + ", NombreDeAttestationScolariteRestantes="
+				+ NombreDeAttestationScolariteRestantes + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -173,6 +177,18 @@ public class Demmandeur {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	public Integer getNombreDeAttestationInscriptionRestantes() {
+		return NombreDeAttestationInscriptionRestantes;
+	}
+	public void setNombreDeAttestationInscriptionRestantes(Integer nombreDeAttestationInscriptionRestantes) {
+		NombreDeAttestationInscriptionRestantes = nombreDeAttestationInscriptionRestantes;
+	}
+	public Integer getNombreDeAttestationScolariteRestantes() {
+		return NombreDeAttestationScolariteRestantes;
+	}
+	public void setNombreDeAttestationScolariteRestantes(Integer nombreDeAttestationScolariteRestantes) {
+		NombreDeAttestationScolariteRestantes = nombreDeAttestationScolariteRestantes;
 	}
 	
 	

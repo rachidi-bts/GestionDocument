@@ -11,7 +11,7 @@ import com.itextpdf.text.DocumentException;
 
 public interface DemmandeDocumentService {
 
-	public DemmandeDocument save(DemmandeDocument demmandedocument);
+	public int save(DemmandeDocument demmandedocument);
 
 	public List<DemmandeDocument> findAll();
 
