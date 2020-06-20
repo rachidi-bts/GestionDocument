@@ -1,15 +1,15 @@
 package com.gestion.demo.ws.vo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class TypeFiliereVo{
 
 private String id ;
 private String libelle ;
-private FiliereVo filiereVo ;
 
+
+public TypeFiliereVo(){
+    super();
+  }
 
 
 public String  getId(){
@@ -28,13 +28,6 @@ public void setLibelle(String  libelle){
      this.libelle = libelle;
 }
 
-public FiliereVo  getFiliereVo (){
-    return filiereVo ;
-}
-
-public void setFilliereVo (FiliereVo  fillieretVo ){
-     this.filiereVo  = fillieretVo ;
-}
 
 
 

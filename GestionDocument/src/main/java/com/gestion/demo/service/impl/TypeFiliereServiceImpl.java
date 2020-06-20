@@ -27,9 +27,7 @@ import com.gestion.demo.service.util.SearchUtil;
 
  private EntityManager entityManager; 
 
- @Autowired 
-
- private FiliereService filiereService; 
+ 
 
  @Override 
 public TypeFiliere  save (TypeFiliere typeFiliere){
@@ -70,7 +68,6 @@ public void clone(TypeFiliere typeFiliere,TypeFiliere typeFiliereClone){
 if(typeFiliere!= null && typeFiliereClone != null){
 typeFiliereClone.setId(typeFiliere.getId());
 typeFiliereClone.setLibelle(typeFiliere.getLibelle());
-typeFiliereClone.setFiliere(filiereService.clone(typeFiliere.getFiliere()));
 }
 }
 public TypeFiliere clone(TypeFiliere typeFiliere){

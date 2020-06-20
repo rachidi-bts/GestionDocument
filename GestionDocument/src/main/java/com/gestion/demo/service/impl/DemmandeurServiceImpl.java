@@ -1,12 +1,8 @@
 
 package com.gestion.demo.service.impl ;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 
 import javax.persistence.EntityManager;
 
@@ -17,15 +13,7 @@ import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.dao.DemmandeurDao;
 import com.gestion.demo.service.facade.DemmandeurService;
 import com.gestion.demo.service.facade.FiliereService;
-import com.gestion.demo.service.util.SearchUtil;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter; 
+import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
 

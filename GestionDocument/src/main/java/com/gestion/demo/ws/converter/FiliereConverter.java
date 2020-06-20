@@ -1,5 +1,6 @@
 package com.gestion.demo.ws.converter;
  
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gestion.demo.bean.Filiere;
@@ -10,28 +11,29 @@ import com.gestion.demo.ws.vo.FiliereVo;
  @Component 
 public class FiliereConverter extends AbstractConverter<Filiere,FiliereVo>{ 
 
+	 private boolean typeFiliere; 
 
- @Override 
- public Filiere toItem(FiliereVo vo) {
- if (vo == null) {
-    return null;
-      } else {
-Filiere item = new Filiere();
+	 @Autowired
+	 private TypeFiliereConverter typeFiliereConverter ; 
+	 
+		@Override 
+	 	public Filiere toItem(FiliereVo vo) {
+	 	if (vo == null) {
+	   	 return null;
+	      } else {
+	      	Filiere item = new Filiere();
+				 if(StringUtil.isNotEmpty(vo.getAbrv()))
+	                  item.setAbrv(vo.getAbrv());
+				 if(StringUtil.isNotEmpty(vo.getLibelle()))
+	                  item.setLibelle(vo.getLibelle());
+				 if(StringUtil.isNotEmpty(vo.getId()))
+	                  item.setId(NumberUtil.toLong(vo.getId()));
+	             if(vo.getTypeFiliereVo()!=null && this.typeFiliere)
+		              item.setTypeFiliere(typeFiliereConverter.toItem(vo.getTypeFiliereVo())) ;
 
- if (StringUtil.isNotEmpty(vo.getLibelle())) {
- item.setLibelle(vo.getLibelle());
-} 
- 
- if (StringUtil.isNotEmpty(vo.getAbrv())) {
- item.setAbrv(vo.getAbrv());
-} 
 
- if (vo.getId() != null) {
- item.setId(NumberUtil.toLong(vo.getId()));
-} 
-
-return item;
- }
+			return item;
+	 		}
  }
 
   @Override 

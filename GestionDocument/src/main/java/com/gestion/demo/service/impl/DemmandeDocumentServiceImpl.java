@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,6 @@ import com.gestion.demo.service.facade.EtatDemmandeService;
 import com.gestion.demo.service.facade.TypeDocumentService;
 import com.gestion.demo.service.util.SearchUtil;
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -33,9 +31,6 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.CMYKColor;
-import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 //import com.itextpdf.layout.element.Text;
@@ -77,20 +72,20 @@ public class DemmandeDocumentServiceImpl implements DemmandeDocumentService {
 			return -1;
 		} else {
 			if(demmandedocument.getTypeDocument().getLibelle().equals("Attestation d'inscription")) {
-				if(demmandedocument.getDemmandeur().getNombreDeAttestationInscriptionRestantes() == 0) {
+				if(demmandedocument.getDemmandeur().getNbreAttestInscrRest() == 0) {
 					return -2;
 						} else {
-							demmandedocument.getDemmandeur().setNombreDeAttestationInscriptionRestantes((demmandedocument.getDemmandeur().getNombreDeAttestationInscriptionRestantes() -1));
-							System.out.println(demmandedocument.getDemmandeur().getNombreDeAttestationInscriptionRestantes());
+							demmandedocument.getDemmandeur().setNbreAttestInscrRest((demmandedocument.getDemmandeur().getNbreAttestInscrRest() -1));
+							System.out.println(demmandedocument.getDemmandeur().getNbreAttestInscrRest());
 							demmandeurDao.save(demmandedocument.getDemmandeur());
 							demmandedocumentDao.save(demmandedocument);
 						}				
 			}
 			if(demmandedocument.getTypeDocument().getLibelle().equals("Certificat de scolarité")) {
-				if(demmandedocument.getDemmandeur().getNombreDeCertificatScolariteRestantes() == 0) {
+				if(demmandedocument.getDemmandeur().getNbreCertScolRest() == 0) {
 					return -3;
 						} else {
-							demmandedocument.getDemmandeur().setNombreDeCertificatScolariteRestantes((demmandedocument.getDemmandeur().getNombreDeCertificatScolariteRestantes() -1));
+							demmandedocument.getDemmandeur().setNbreCertScolRest((demmandedocument.getDemmandeur().getNbreCertScolRest() -1));
 							demmandeurDao.save(demmandedocument.getDemmandeur());
 							demmandedocumentDao.save(demmandedocument);
 						}

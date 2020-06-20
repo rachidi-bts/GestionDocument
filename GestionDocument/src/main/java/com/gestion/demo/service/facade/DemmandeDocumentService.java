@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.gestion.demo.bean.DemmandeDocument;
-import com.gestion.demo.bean.Demmandeur;
 import com.gestion.demo.dao.DemmandeDocumentDao;
 import com.itextpdf.text.DocumentException;
 

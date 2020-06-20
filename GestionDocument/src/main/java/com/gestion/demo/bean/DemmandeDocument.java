@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import com.gestion.demo.bean.Demmandeur;
+import com.gestion.demo.bean.TypeDocument;
+import com.gestion.demo.bean.EtatDemmande;
 
 @Entity
 public class DemmandeDocument {
@@ -25,8 +28,6 @@ public class DemmandeDocument {
 	private EtatDemmande etatDemmande;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateValidation ;
-	
-	private String pathDocument;
 	
 	public Long getId() {
 		return id;

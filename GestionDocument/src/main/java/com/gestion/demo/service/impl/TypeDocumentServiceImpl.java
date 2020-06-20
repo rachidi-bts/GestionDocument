@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.gestion.demo.bean.TypeDocument;
 import com.gestion.demo.dao.TypeDocumentDao;
-import com.gestion.demo.service.facade.TypeFiliereService;
 import com.gestion.demo.service.facade.TypeDocumentService;
+import com.gestion.demo.service.facade.TypeFiliereService;
 import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  

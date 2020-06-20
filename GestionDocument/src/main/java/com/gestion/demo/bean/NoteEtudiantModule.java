@@ -15,7 +15,7 @@ public class NoteEtudiantModule {
 	private Long id;
 	@ManyToOne
 	private Module module;
-	private double note;
+	private Double note;
 	private String ptsJury;
 	@ManyToOne
 	private Resultat resultat;
@@ -33,10 +33,10 @@ public class NoteEtudiantModule {
 	public void setModule(Module module) {
 		this.module = module;
 	}
-	public double getNote() {
+	public Double getNote() {
 		return note;
 	}
-	public void setNote(double note) {
+	public void setNote(Double note) {
 		this.note = note;
 	}
 	public String getPtsJury() {
@@ -61,7 +61,7 @@ public class NoteEtudiantModule {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NoteEtudiantModule(Long id, Module module, double note, String ptsJury, Resultat resultat,
+	public NoteEtudiantModule(Long id, Module module, Double note, String ptsJury, Resultat resultat,
 			NoteEtudiant noteEtudiant) {
 		super();
 		this.id = id;

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import com.gestion.demo.bean.TypeFiliere;
 
 @Entity
 public class Filiere {
@@ -12,6 +14,9 @@ public class Filiere {
 	private Long id;
 	private String libelle;
 	private String abrv;
+	@ManyToOne
+	private TypeFiliere typeFiliere ;
+	
 	public Long getId() {
 		return id;
 	}
@@ -31,17 +36,27 @@ public class Filiere {
 		this.abrv = abrv;
 	}
 	
+	public TypeFiliere getTypeFiliere() {
+		return typeFiliere;
+	}
+	public void setTypeFiliere(TypeFiliere typeFiliere) {
+		this.typeFiliere = typeFiliere;
+	}
+	
 	public Filiere() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Filiere(Long id, String libelle, String abrv) {
+	
+	public Filiere(Long id, String libelle, String abrv, TypeFiliere typeFiliere) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.abrv = abrv;
+		this.typeFiliere = typeFiliere;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,8 +79,10 @@ public class Filiere {
 	}
 	@Override
 	public String toString() {
-		return "Filiere [id=" + id + ", libelle=" + libelle + ", abrv=" + abrv + "]";
+		return "Filiere [id=" + id + ", libelle=" + libelle + ", abrv=" + abrv + ", typeFiliere=" + typeFiliere + "]";
 	}
+	
+	
 	
 	
 }

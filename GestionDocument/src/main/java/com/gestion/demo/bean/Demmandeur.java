@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import com.gestion.demo.bean.Filiere;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -34,8 +35,9 @@ public class Demmandeur {
 	private Filiere filiere;
 	private String login;
 	private String password;
-	private Integer nombreDeAttestationInscriptionRestantes;
-	private Integer nombreDeCertificatScolariteRestantes;
+	private Integer nbreAttestInscrRest;
+	private Integer nbreCertScolRest;
+	private Integer nbreRelvRest;
 	
 	public Long getId() {
 		return id;
@@ -120,12 +122,31 @@ public class Demmandeur {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    	
+	
+	public Integer getNbreAttestInscrRest() {
+		return nbreAttestInscrRest;
+	}
+	public void setNbreAttestInscrRest(Integer nbreAttestInscrRest) {
+		this.nbreAttestInscrRest = nbreAttestInscrRest;
+	}
+	public Integer getNbreCertScolRest() {
+		return nbreCertScolRest;
+	}
+	public void setNbreCertScolRest(Integer nbreCertScolRest) {
+		this.nbreCertScolRest = nbreCertScolRest;
+	}
+	
+	
+	public Integer getNbreRelvRest() {
+		return nbreRelvRest;
+	}
+	public void setNbreRelvRest(Integer nbreRelvRest) {
+		this.nbreRelvRest = nbreRelvRest;
+	}
 	
 	public Demmandeur(Long id, String cne, String codeApogee, String nom, String prenom, String cin, Date dateNaissance,
 			String villeNaissance, String paysNaissance, Date anneeInscription, Filiere filiere, String login,
-			String password, Integer nombreDeAttestationInscriptionRestantes,
-			Integer nombreDeAttestationScolariteRestantes) {
+			String password, Integer nbreAttestInscrRest, Integer nbreCertScolRest, Integer nbreRelvRest) {
 		super();
 		this.id = id;
 		this.cne = cne;
@@ -140,23 +161,23 @@ public class Demmandeur {
 		this.filiere = filiere;
 		this.login = login;
 		this.password = password;
-		this.nombreDeAttestationInscriptionRestantes = nombreDeAttestationInscriptionRestantes;
-		this.nombreDeCertificatScolariteRestantes = nombreDeCertificatScolariteRestantes;
+		this.nbreAttestInscrRest = nbreAttestInscrRest;
+		this.nbreCertScolRest = nbreCertScolRest;
+		this.nbreRelvRest = nbreRelvRest;
 	}
+	
 	public Demmandeur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Demmandeur [id=" + id + ", cne=" + cne + ", codeApogee=" + codeApogee + ", nom=" + nom + ", prenom="
 				+ prenom + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", villeNaissance=" + villeNaissance
 				+ ", paysNaissance=" + paysNaissance + ", anneeInscription=" + anneeInscription + ", filiere=" + filiere
-				+ ", login=" + login + ", password=" + password + ", NombreDeAttestationInscriptionRestantes="
-				+ nombreDeAttestationInscriptionRestantes + ", NombreDeAttestationScolariteRestantes="
-				+ nombreDeCertificatScolariteRestantes + "]";
+				+ ", login=" + login + ", password=" + password + ", nbreAttestInscrRest=" + nbreAttestInscrRest
+				+ ", nbreCertScolRest=" + nbreCertScolRest + ", nbreRelvRest=" + nbreRelvRest + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -178,18 +199,7 @@ public class Demmandeur {
 			return false;
 		return true;
 	}
-	public Integer getNombreDeAttestationInscriptionRestantes() {
-		return nombreDeAttestationInscriptionRestantes;
-	}
-	public void setNombreDeAttestationInscriptionRestantes(Integer nombreDeAttestationInscriptionRestantes) {
-		nombreDeAttestationInscriptionRestantes = nombreDeAttestationInscriptionRestantes;
-	}
-	public Integer getNombreDeCertificatScolariteRestantes() {
-		return nombreDeCertificatScolariteRestantes;
-	}
-	public void setNombreDeCertificatScolariteRestantes(Integer nombreDeAttestationScolariteRestantes) {
-		nombreDeCertificatScolariteRestantes = nombreDeAttestationScolariteRestantes;
-	}
+	
 	
 	
 }

@@ -5,7 +5,7 @@ public class FiliereVo{
 private String id ;
 private String libelle ;
 private String abrv;
-
+private TypeFiliereVo typeFiliereVo ;
 
 
 public String  getId(){
@@ -32,6 +32,13 @@ public void setAbrv(String abrv) {
 	this.abrv = abrv;
 }
 
+public TypeFiliereVo getTypeFiliereVo(){
+    return this.typeFiliereVo;
+}
+ 
+public void setTypeFiliereVo(TypeFiliereVo typeFiliereVo){
+    this.typeFiliereVo = typeFiliereVo;
+}
 
 
 

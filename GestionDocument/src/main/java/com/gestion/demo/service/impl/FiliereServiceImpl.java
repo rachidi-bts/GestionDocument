@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gestion.demo.bean.Filiere;
 import com.gestion.demo.dao.FiliereDao;
 import com.gestion.demo.service.facade.FiliereService;
+import com.gestion.demo.service.facade.TypeFiliereService;
 import com.gestion.demo.service.util.SearchUtil; 
 
  @Service  
@@ -25,6 +26,10 @@ import com.gestion.demo.service.util.SearchUtil;
  @Autowired 
 
  private EntityManager entityManager; 
+ 
+ @Autowired 
+
+ private TypeFiliereService typeFiliereService;
 
  @Override 
 public Filiere  save (Filiere filiere){
@@ -65,6 +70,7 @@ public void clone(Filiere filiere,Filiere filiereClone){
 if(filiere!= null && filiereClone != null){
 filiereClone.setId(filiere.getId());
 filiereClone.setLibelle(filiere.getLibelle());
+filiereClone.setTypeFiliere(typeFiliereService.clone(filiere.getTypeFiliere()));
 }
 }
 public Filiere clone(Filiere filiere){

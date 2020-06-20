@@ -12,8 +12,7 @@ public class TypeFiliere {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle ;
-	@ManyToOne
-	private Filiere filiere;
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,18 +26,11 @@ public class TypeFiliere {
 		this.libelle = libelle;
 	}
 	
-	public Filiere getFiliere() {
-		return filiere;
-	}
-	public void setFiliere(Filiere filiere) {
-		this.filiere = filiere;
-	}
-
+	
 	public TypeFiliere(Long id, String libelle, Filiere filiere) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-		this.filiere = filiere;
 	}
 	public TypeFiliere() {
 		super();
@@ -65,5 +57,11 @@ public class TypeFiliere {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "TypeFiliere [id=" + id + ", libelle=" + libelle + "]";
+	}
+	
+	
 	
 }
